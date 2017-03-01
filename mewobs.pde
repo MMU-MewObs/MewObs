@@ -1,8 +1,5 @@
 import controlP5.*;
 ControlP5 gui;
-import java.util.*;
-import javax.swing.JOptionPane;
-
 
 enum Mode {
   LAUNCH, SELECTOR, PLAY
@@ -12,19 +9,14 @@ Mode currentMode = Mode.SELECTOR;
 Selector selector;
 Player player;
 EventRecorder recorder;
-PImage image;
 
 void setup() {
-  size(1000, 600);
+  size(1000, 500);
   gui = new ControlP5(this);
   refreshState(Mode.PLAY);
-  image=loadImage("play.png");
 }
 
-//ControlFont cf1 = new ControlFont(createFont("Arial", 15));
-
 void refreshState(Mode newMode) {
-  
   currentMode = newMode;
   switch(newMode) {
   case LAUNCH:
@@ -32,11 +24,10 @@ void refreshState(Mode newMode) {
     selector = new Selector(Mode.PLAY);
     break;
   case PLAY:
-    File videoFile = new File("/Users/DimitrisTheodosidis/Desktop/MMU_JOB/sample.mov");
-    File configFile = new File("/Users/DimitrisTheodosidis/Desktop/MMU_JOB/assign.csv");
-    player = new Player(this, videoFile, true, 15,15,300);
-    File o = new File("output.csv");
-    recorder = new EventRecorder(configFile, o);
+    //File videoFile = new File("/Users/olliedavies/Clients/MMU/mewobsV2/sample.mov");
+    //File configFile = new File("/Users/olliedavies/Clients/MMU/mewobsV2/assign.csv");
+    player = new Player(this, selector.videoFile, true, 30,30,250);
+    recorder = new EventRecorder(selector.configFile, selector.videoFile.getName());
     break;
   }
 }
@@ -60,10 +51,8 @@ void draw() {
   case SELECTOR:
     break;
   case PLAY:
-    background(200, 200, 200); 
     player.render();
+    //recorder.render();
     break;
   }
- 
-
 }
