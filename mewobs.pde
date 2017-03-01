@@ -3,7 +3,6 @@ ControlP5 gui;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-
 enum Mode {
   LAUNCH, SELECTOR, PLAY
 }
@@ -17,14 +16,13 @@ PImage image;
 void setup() {
   size(1000, 600);
   gui = new ControlP5(this);
-  refreshState(Mode.PLAY);
+  refreshState(Mode.SELECTOR);
   image=loadImage("play.png");
 }
 
 //ControlFont cf1 = new ControlFont(createFont("Arial", 15));
 
 void refreshState(Mode newMode) {
-  
   currentMode = newMode;
   switch(newMode) {
   case LAUNCH:
@@ -32,11 +30,8 @@ void refreshState(Mode newMode) {
     selector = new Selector(Mode.PLAY);
     break;
   case PLAY:
-    File videoFile = new File("/Users/DimitrisTheodosidis/Desktop/MMU_JOB/sample.mov");
-    File configFile = new File("/Users/DimitrisTheodosidis/Desktop/MMU_JOB/assign.csv");
-    player = new Player(this, videoFile, true, 15,15,300);
-    File o = new File("output.csv");
-    recorder = new EventRecorder(configFile, o);
+    player = new Player(this, selector.videoFile, true, 15,15,300);
+    recorder = new EventRecorder(selector.configFile, selector.videoFile.getName());
     break;
   }
 }
@@ -64,6 +59,5 @@ void draw() {
     player.render();
     break;
   }
- 
 
 }
