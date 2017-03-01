@@ -1,5 +1,5 @@
 # MewObs
-## A free open-source video analysis program
+## A free, open-source video analysis program
 
 © Dr Matthew S Sullivan, Manchester Metropolitan University, UK, 2016.
 
