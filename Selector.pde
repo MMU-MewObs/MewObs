@@ -10,6 +10,11 @@ public class Selector {
   ControlFont cf1 = new ControlFont(createFont("Arial", 15));
   ControlFont cf2 = new ControlFont(createFont("Ubuntu", 54));
   
+  //buttons
+  Textlabel title;
+  Button btnVideo;
+  Button btnSettings;
+  Button btnNextState;
   
   Selector(Mode nextState) {
     
@@ -17,7 +22,7 @@ public class Selector {
     this.nextState = nextState;
     
     //TITLE
-    Textlabel title=gui.addLabel("Wellcome to Mewobs")
+    title = gui.addLabel("Wellcome to Mewobs")
         .setPosition(200,50)
         .setColor(0)
         .setFont(cf2)
@@ -26,7 +31,7 @@ public class Selector {
     //VIDEO BUTTON
 
     
-    Button btnVideo = gui.addButton("videoSelector")
+    btnVideo = gui.addButton("videoSelector")
       .setLabel("1) Choose Video File")
       .setPosition(150, 200)
       .setColorBackground(0)
@@ -35,7 +40,7 @@ public class Selector {
     btnVideo.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
     //FILE BUTTON
-    Button btnSettings = gui.addButton("configSelector")
+    btnSettings = gui.addButton("configSelector")
       .setLabel("2) Choose Config File")
       .setPosition(380, 200)
       .setColorBackground(0)
@@ -44,7 +49,7 @@ public class Selector {
     btnSettings.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
     //NEXT BUTTON
-    Button btnNextState = gui.addButton("toNextState")
+    btnNextState = gui.addButton("toNextState")
       .setLabel("3) Next")
       .setPosition(610,200)
       .setColorBackground(0)
@@ -92,7 +97,10 @@ void toNextState() {
 JOptionPane.showMessageDialog(null, "Please Provide the feilds", "1 or more Feilds Empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
   }
   else{
-    gui.hide();
+    title.hide();
+    btnVideo.hide();
+    btnSettings.hide();
+    btnNextState.hide();
     refreshState(nextState);
   }
   }
