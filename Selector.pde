@@ -6,7 +6,6 @@ public class Selector {
   File configFile;
   Mode nextState;
   
-
   ControlFont cf1 = new ControlFont(createFont("Arial", 15));
   ControlFont cf2 = new ControlFont(createFont("Ubuntu", 54));
   

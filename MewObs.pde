@@ -1,11 +1,7 @@
-//TEST
-//TEST1
 import controlP5.*;
 ControlP5 gui;
 import java.util.*;
 import javax.swing.JOptionPane;
-
-// test 3
 
 enum Mode {
   LAUNCH, SELECTOR, PLAY
