@@ -17,7 +17,7 @@ void setup() {
   size(1000, 600);
   gui = new ControlP5(this);
   refreshState(Mode.SELECTOR);
-  image=loadImage("play.png");
+  //image=loadImage("play.png");
 }
 
 //ControlFont cf1 = new ControlFont(createFont("Arial", 15));
