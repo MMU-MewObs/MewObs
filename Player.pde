@@ -140,10 +140,9 @@ public class Player {
       .plugTo(this);
   }
   
- public void SpeedCtrl(int n) {
+  public void SpeedCtrl(int n) {
     mov.speed((float)gui.get(ScrollableList.class, "SpeedCtrl").getItem(n).get("value"));
-   
-}
+  }
   
   
   public void mute()
