@@ -11,10 +11,15 @@ Mode currentMode = Mode.SELECTOR;
 Selector selector;
 Player player;
 EventRecorder recorder;
-PImage image;
+PImage image,background1;
+
+
 
 void setup() {
-  size(1000, 600);
+  size(600, 600);
+  surface.setResizable(true);
+  background1=loadImage("images/bg.jpg");
+  background1.resize(width,height);
   gui = new ControlP5(this);
   refreshState(Mode.SELECTOR);
 }
@@ -29,7 +34,7 @@ void refreshState(Mode newMode) {
     selector = new Selector(Mode.PLAY);
     break;
   case PLAY:
-    player = new Player(this, selector.videoFile, true, 15,15,300);
+    player = new Player(this, selector.videoFile, true, 2,2,317);
     recorder = new EventRecorder(selector.configFile, selector.videoFile.getName());
     break;
   }
@@ -54,7 +59,7 @@ void draw() {
   case SELECTOR:
     break;
   case PLAY:
-    background(200, 200, 200); 
+    background(background1); 
     player.render();
     break;
   }

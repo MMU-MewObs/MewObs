@@ -6,6 +6,7 @@ public class Selector {
   File configFile;
   Mode nextState;
   
+  
   ControlFont cf1 = new ControlFont(createFont("Arial", 15));
   ControlFont cf2 = new ControlFont(createFont("Ubuntu", 54));
   
@@ -19,6 +20,8 @@ public class Selector {
     
     background(200, 200, 200);
     this.nextState = nextState;
+    
+    surface.setSize(1000,600);
     
     //TITLE
     title = gui.addLabel("Welcome to Mewobs")
