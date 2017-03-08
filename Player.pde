@@ -28,32 +28,55 @@ public class Player {
   }
 
   public void gui() {
-    PImage playb,pauseb,muteb,mediumb,highb;
+    PImage muteb,mute_click,mute_hover,mediumb,medium_click,medium_hover,loudb,loud_click,loud_hover;
+    PImage play_click,play_hover,playb;
+    PImage pause_click,pause_hover,pauseb;
     
+    //PLAY BUTTON
     playb=loadImage("images/play.png");
+    play_click=loadImage("images/play_click.png");
+    play_hover=loadImage("images/play_hover.png");
     playb.resize(25,25);
-    
+    play_hover.resize(25,25);
+    play_hover.resize(25,25);
+    //PAUSE BUTTON
     pauseb=loadImage("images/pause.png");
+    pause_click=loadImage("images/pause_click.png");
+    pause_hover=loadImage("images/pause_hover.png");
     pauseb.resize(25,25);
-    
+    pause_click.resize(25,25);
+    pause_hover.resize(25,25);
+    //MUTE
     muteb=loadImage("images/mute.png");
+    mute_click=loadImage("images/mute_click.png");
+    mute_hover=loadImage("images/mute_hover.png");
     muteb.resize(25,25);
-    
+    mute_click.resize(25,25);
+    mute_hover.resize(25,25);
+    //MEDIUM
     mediumb=loadImage("images/medium.png");
+    medium_click=loadImage("images/medium_click.png");
+    medium_hover=loadImage("images/medium_hover.png");
     mediumb.resize(25,25);
-    
-    highb=loadImage("images/loud.png");
-    highb.resize(25,25);
+    medium_click.resize(25,25);
+    medium_hover.resize(25,25);
+    //LOUD
+    loudb=loadImage("images/loud.png");
+    loud_click=loadImage("images/loud_click.png");
+    loud_hover=loadImage("images/loud_hover.png");
+    loudb.resize(25,25);
+    loud_click.resize(25,25);
+    loud_hover.resize(25,25);
     
     Button play =gui.addButton("play")
       .setPosition(20, 320)
-      .setImage(playb)
+      .setImages(playb,play_click,play_hover)
       .plugTo(this);
     play.getCaptionLabel();
 
     Button pause =gui.addButton("pause")
       .setPosition(60, 320)
-      .setImage(pauseb)
+      .setImages(pauseb,pause_click,pause_hover)
       .plugTo(this);
     pause.getCaptionLabel();
     
@@ -72,19 +95,19 @@ public class Player {
         
     
     Button Mute =gui.addButton("mute")
-      .setImage(muteb)
+      .setImages(muteb,mute_click,mute_hover)
       .setPosition(370, 320)
       .plugTo(this);
     Mute.getCaptionLabel();
     
     Button Medium =gui.addButton("Medium")
-      .setImage(mediumb)
+      .setImages(mediumb,medium_hover,medium_click)
       .setPosition(410, 320)
       .plugTo(this);
     Medium.getCaptionLabel();
  
     Button High =gui.addButton("High")
-      .setImage(highb)
+      .setImages(loudb,loud_click,loud_hover)
       .setPosition(450, 320)
       .plugTo(this);
     High.getCaptionLabel();
