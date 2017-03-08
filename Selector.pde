@@ -21,8 +21,6 @@ public class Selector {
     background(200, 200, 200);
     this.nextState = nextState;
     
-    surface.setSize(1000,600);
-    
     //TITLE
     title = gui.addLabel("Welcome to Mewobs")
         .setPosition(200,50)

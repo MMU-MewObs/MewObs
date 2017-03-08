@@ -16,8 +16,7 @@ PImage image,background1;
 
 
 void setup() {
-  size(600, 600);
-  surface.setResizable(true);
+  size(1000, 600);
   background1=loadImage("images/bg.jpg");
   background1.resize(width,height);
   gui = new ControlP5(this);

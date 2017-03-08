@@ -28,9 +28,6 @@ public class Player {
   }
 
   public void gui() {
-    
-    surface.setSize(1000,600);
-
     PImage playb,pauseb,muteb,mediumb,highb;
     
     playb=loadImage("images/play.png");
