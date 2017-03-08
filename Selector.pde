@@ -17,11 +17,11 @@ public class Selector {
   Button btnNextState;
   
   Selector(Mode nextState) {
-    background(200, 200, 200);
+    background(background1);
     this.nextState = nextState;
     
     //TITLE
-    title = gui.addLabel("Welcome to Mewobs")
+    title = gui.addLabel("Welcome to MewObs")
         .setPosition(200,50)
         .setColor(0)
         .setFont(cf2)

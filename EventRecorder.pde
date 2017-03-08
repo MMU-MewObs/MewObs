@@ -54,8 +54,6 @@ public class EventRecorder {
   public void keyEvent(Character k, float time, float duration) {
     if(k == 'x'){
       saveFile();
-    } else if (k == BACKSPACE){
-      
     }
      //make this a dynamic key
     for (Event e : events) {
@@ -82,10 +80,11 @@ public class EventRecorder {
       String outputFileName = JOptionPane.showInputDialog(null, "Choose output file name", videoFileName.replaceFirst("[.][^.]+$", "") + "_" + configFile.getName().replaceFirst("[.][^.]+$", ""));
       File renamedOutput = new File(selection.getAbsolutePath()+ "/" + outputFileName + ".csv");
       if(outputFileName != null){
-        //if(renamedOutput.exists() == true){
-        //  if(JOptionPane.showConfirmDialog(null, "Would you like green eggs and ham?", "An Inane Question", JOptionPane.YES_NO_OPTION) == true){
-        //  };
-        //}
+        println(renamedOutput.getAbsolutePath());
+        if(renamedOutput.exists() == true && JOptionPane.showConfirmDialog(null, "File already exists, do you want to overwrite it?", "Override File", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION){
+          JOptionPane.showMessageDialog(null, "Cancelled saving file", "Cancelled saving file", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          return;
+        }
         try {
           output.flush();
           output.close();
@@ -93,7 +92,7 @@ public class EventRecorder {
         } catch (IOException err){
           println("Error occoured trying to write to file");
           err.printStackTrace();
-        } 
+        }        
       } else {
         JOptionPane.showMessageDialog(null, "Input failed", "File name cannot be empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       }

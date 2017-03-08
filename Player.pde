@@ -93,6 +93,7 @@ public class Player {
     
     Slider videoLenght =gui.addSlider("slider")
       .setSize(170,15)
+      .setLabelVisible(false)
       .setColorBackground(0)
       .setPosition(100, 325)
       .setRange(0, mov.duration());
