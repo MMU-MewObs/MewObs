@@ -99,7 +99,7 @@ public class Player {
       .setRange(0, mov.duration());
     
     Textlabel volume = gui.addLabel("Volume:")
-        .setPosition(290,325)
+        .setPosition(300,325)
         .setSize(30,30)
         .setColorValue(0)
         .setFont(createFont("Helvetica",13))
