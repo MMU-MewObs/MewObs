@@ -26,19 +26,24 @@ public class Player {
     render();
     gui();
   }
-
-  public void gui() {
-    PImage muteb,mute_click,mute_hover,mediumb,medium_click,medium_hover,loudb,loud_click,loud_hover;
+  
+      Button play,pause;
+      
+      PImage muteb,mute_click,mute_hover,mediumb,medium_click,medium_hover,loudb,loud_click,loud_hover;
     PImage play_click,play_hover,playb;
     PImage pause_click,pause_hover,pauseb;
+
+  public void gui() {
+
     
     //PLAY BUTTON
     playb=loadImage("images/play.png");
     play_click=loadImage("images/play_click.png");
     play_hover=loadImage("images/play_hover.png");
     playb.resize(25,25);
+    play_click.resize(25,25);
     play_hover.resize(25,25);
-    play_hover.resize(25,25);
+    
     //PAUSE BUTTON
     pauseb=loadImage("images/pause.png");
     pause_click=loadImage("images/pause_click.png");
@@ -46,6 +51,7 @@ public class Player {
     pauseb.resize(25,25);
     pause_click.resize(25,25);
     pause_hover.resize(25,25);
+    
     //MUTE
     muteb=loadImage("images/mute.png");
     mute_click=loadImage("images/mute_click.png");
@@ -53,6 +59,7 @@ public class Player {
     muteb.resize(25,25);
     mute_click.resize(25,25);
     mute_hover.resize(25,25);
+    
     //MEDIUM
     mediumb=loadImage("images/medium.png");
     medium_click=loadImage("images/medium_click.png");
@@ -60,6 +67,7 @@ public class Player {
     mediumb.resize(25,25);
     medium_click.resize(25,25);
     medium_hover.resize(25,25);
+    
     //LOUD
     loudb=loadImage("images/loud.png");
     loud_click=loadImage("images/loud_click.png");
@@ -68,19 +76,22 @@ public class Player {
     loud_click.resize(25,25);
     loud_hover.resize(25,25);
     
-    Button play =gui.addButton("play")
+    //****BUTTONS****
+    play =gui.addButton("btnPlay")
       .setPosition(20, 320)
-      .setImages(playb,play_click,play_hover)
+      .setImages(playb,play_hover,play_click)
+      .setSize(25,25)
       .plugTo(this);
     play.getCaptionLabel();
 
     Button pause =gui.addButton("pause")
       .setPosition(60, 320)
-      .setImages(pauseb,pause_click,pause_hover)
+      .setImages(pauseb,pause_hover,pause_click)
+      .setSize(25,25)
       .plugTo(this);
     pause.getCaptionLabel();
     
-    Slider videoLenght =gui.addSlider("")
+    Slider videoLenght =gui.addSlider("slider")
       .setSize(170,15)
       .setColorBackground(0)
       .setPosition(100, 325)
@@ -95,40 +106,73 @@ public class Player {
         
     
     Button Mute =gui.addButton("mute")
-      .setImages(muteb,mute_click,mute_hover)
+      .setImages(muteb,mute_hover,mute_click)
+      .setSize(25,25)
       .setPosition(370, 320)
       .plugTo(this);
     Mute.getCaptionLabel();
     
     Button Medium =gui.addButton("Medium")
       .setImages(mediumb,medium_hover,medium_click)
+       .setSize(25,25)
       .setPosition(410, 320)
       .plugTo(this);
     Medium.getCaptionLabel();
  
     Button High =gui.addButton("High")
-      .setImages(loudb,loud_click,loud_hover)
+      .setImages(loudb,loud_hover,loud_click)
+       .setSize(25,25)
       .setPosition(450, 320)
       .plugTo(this);
     High.getCaptionLabel();
-    
-    ListBox speed =gui.addListBox("Speed")
+
+    ScrollableList Speed = gui.addScrollableList("SpeedCtrl")
       .setPosition(485,325)
       .setSize(80,100)
       .setItemHeight(15)
       .setBarHeight(15)
-      .setColorBackground(0);
-     speed.addItem("Speed 0.5", 0.5); 
-     speed.addItem("Speed 1", 1); 
-     speed.addItem("Speed 1.5", 1.5); 
-     speed.addItem("Speed 2", 2);
-
+      .addItem("Speed 0.5", 0.5)
+      .addItem("Speed 1",0.99)
+      .addItem("Speed 1.5", 1.5) 
+      .addItem("Speed 2",1.99)
+      .setColorBackground(0)
+      .plugTo(this);
   }
-
-  public void play() {
+  
+ public void SpeedCtrl(int n) {
+    mov.speed((float)gui.get(ScrollableList.class, "SpeedCtrl").getItem(n).get("value"));
+   
+}
+  
+  
+  public void mute()
+  {
+    mov.volume(0);
+  }
+  public void Medium()
+  {
+    mov.volume(0.5);
+  }
+  public void High()
+  {
+    mov.volume(1);
+  }
+  
+  public void pause()
+  {
+    mov.pause();
+  }
+  
+  public void btnPlay(){
     mov.play();
   }
-
+  //NOT WORKING**
+  public void slider()
+  {
+    mov.time();
+  }
+  
+  
   public float getTime() {
     return mov.time();
   }

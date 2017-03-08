@@ -17,8 +17,8 @@ PImage image,background1;
 
 void setup() {
   size(1000, 600);
-  background1=loadImage("images/bg.jpg");
-  background1.resize(width,height);
+ // background1=loadImage("images/bg.jpg");
+  //background1.resize(width,height);
   gui = new ControlP5(this);
   refreshState(Mode.SELECTOR);
 }
@@ -47,6 +47,7 @@ void keyPressed() {
     break;
   case PLAY:
     recorder.keyEvent(key, player.getTime(), player.getDuration());
+    
     break;
   }
 }
@@ -58,6 +59,7 @@ void draw() {
   case SELECTOR:
     break;
   case PLAY:
+  background(255);
     player.render();
     break;
   }
