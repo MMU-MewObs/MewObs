@@ -58,7 +58,6 @@ void draw() {
   case SELECTOR:
     break;
   case PLAY:
-    background(background1); 
     player.render();
     break;
   }

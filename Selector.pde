@@ -17,7 +17,6 @@ public class Selector {
   Button btnNextState;
   
   Selector(Mode nextState) {
-    
     background(200, 200, 200);
     this.nextState = nextState;
     
