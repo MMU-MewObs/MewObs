@@ -2,10 +2,12 @@ import java.io.*;
 
 final int STEVE = 1;
 final int GROUP = 2;
-final int OTHER = 3;
+final int LOG = 3;
+final int OTHER = 4;
 
 public class EventRecorder {
   ArrayList<Event> events;
+  //ArrayList<Log> logs;
   String userVars;
   String videoFileName;
   FileWriter output;
@@ -32,11 +34,13 @@ public class EventRecorder {
       String[] row = (x.split(","));
       switch(Integer.valueOf((row[0]))) {
       case STEVE:
-        events.add(new Event(row[1].charAt(0), row[2], row[3], row[4], row[5], row[6]));
+        events.add(new Event(row[1], row[2], row[3], row[4]));
         break;
       case GROUP:
-        userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4], row[5], row[6]});
+        userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
         break;
+      case LOG:
+        events.add(new Event(row[1], row[2], row[3], row[4]));
       }
     }
     try {
@@ -47,12 +51,13 @@ public class EventRecorder {
     }
   }
 
-  public void keyEvent(char k, float time, float duration) {
+  public void keyEvent(Character k, float time, float duration) {
     if(k == 'x'){
       saveFile();
+    } else if (k == BACKSPACE){
+      
     }
-    
-    // make this a dynamic key
+     //make this a dynamic key
     for (Event e : events) {
       if (e.keyStroke == k) {
         // dont break out of loop incase multiple steves are required for a single keystokes
@@ -75,11 +80,15 @@ public class EventRecorder {
   public void outputDirectorySelected(File selection){
     if (selection != null) {
       String outputFileName = JOptionPane.showInputDialog(null, "Choose output file name", videoFileName.replaceFirst("[.][^.]+$", "") + "_" + configFile.getName().replaceFirst("[.][^.]+$", ""));
+      File renamedOutput = new File(selection.getAbsolutePath()+ "/" + outputFileName + ".csv");
       if(outputFileName != null){
+        //if(renamedOutput.exists() == true){
+        //  if(JOptionPane.showConfirmDialog(null, "Would you like green eggs and ham?", "An Inane Question", JOptionPane.YES_NO_OPTION) == true){
+        //  };
+        //}
         try {
           output.flush();
           output.close();
-          File renamedOutput = new File(selection.getAbsolutePath()+ "/" + outputFileName + ".csv");
           outputFile.renameTo(renamedOutput);
         } catch (IOException err){
           println("Error occoured trying to write to file");
@@ -94,27 +103,21 @@ public class EventRecorder {
   }
 }
 
-// TODO: reduce megs to 1 if format still works with Matthew
 public class Event {
-  char keyStroke;
-  String label, steve, meg1, meg2, meg3;
-  Event(char keyStroke, String label, String steve, String meg1, String meg2, String meg3) {
+  Object keyStroke;
+  String label, steve, meg;
+  Event(Object keyStroke, String label, String steve, String meg) {
     this.keyStroke = keyStroke;
     this.label = label;
     this.steve = steve;
-    this.meg1 = meg1;
-    this.meg2 = meg2;
-    this.meg3 = meg3;
+    this.meg = meg;
   }
 
-  // TODO: add other megs if they exist
   String getOutputString() {
-    String[] toWrite = new String[5];
+    String[] toWrite = new String[3];
     toWrite[0] = label;
     toWrite[1] = steve;
-    toWrite[2] = meg1;
-    toWrite[3] = meg2;
-    toWrite[4] = meg3;
+    toWrite[2] = meg;
     return join(toWrite, ",");
   }
 }

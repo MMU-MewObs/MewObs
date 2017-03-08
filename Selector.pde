@@ -21,7 +21,7 @@ public class Selector {
     this.nextState = nextState;
     
     //TITLE
-    title = gui.addLabel("Wellcome to Mewobs")
+    title = gui.addLabel("Welcome to Mewobs")
         .setPosition(200,50)
         .setColor(0)
         .setFont(cf2)

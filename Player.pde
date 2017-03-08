@@ -96,12 +96,6 @@ public class Player {
      speed.addItem("Speed 1", 1); 
      speed.addItem("Speed 1.5", 1.5); 
      speed.addItem("Speed 2", 2);
-    
-    
-    
-    
- 
- 
 
   }
 
