@@ -13,8 +13,6 @@ Player player;
 EventRecorder recorder;
 PImage image,background1;
 
-
-
 void setup() {
   size(1000, 600);
   background1=loadImage("images/bg.jpg");
@@ -53,13 +51,12 @@ void keyPressed() {
 
 void draw() {
   switch(currentMode) {
-  case LAUNCH:
-    break;
-  case SELECTOR:
-    break;
-  case PLAY:
-    player.render();
-    break;
+    case LAUNCH:
+      break;
+    case SELECTOR:
+      break;
+    case PLAY:
+      player.render();
+      break;
   }
-
 }
