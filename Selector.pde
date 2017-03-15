@@ -8,7 +8,7 @@ public class Selector {
   
   
   ControlFont cf1 = new ControlFont(createFont("Arial", 15));
-  ControlFont cf2 = new ControlFont(createFont("Ubuntu", 54));
+  ControlFont cf2 = new ControlFont(createFont("Helvetica", 54));
   
   //buttons
   Textlabel title;
