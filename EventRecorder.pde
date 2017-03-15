@@ -47,6 +47,8 @@ public class EventRecorder {
     }
     try {
       output = new FileWriter(outputFile.getAbsolutePath(), true);
+      output.write("label, steve, meg, time, duration," + userVars +  "\n" );
+      output.flush();
     } catch(IOException err) {
       println("Couldn't get output file.");
       err.printStackTrace();
@@ -68,7 +70,7 @@ public class EventRecorder {
         try {
           output.write(e.getOutputString(",") + "," + time + "," + duration + "," + userVars +  "\n" );
           output.flush();
-          logger.addLine(e.getGUIString() + "     " + time, true);
+          logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), true);
         } catch (IOException err){
           println("Error occoured trying to write to file");
           err.printStackTrace();
@@ -120,7 +122,6 @@ public class Event {
     this.label = label;
     this.steve = steve;
     this.meg = meg;
-    
   }
 
   String getOutputString(String seperator) {

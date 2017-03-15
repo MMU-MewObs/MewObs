@@ -8,11 +8,15 @@ public class Logger {
   }
   
   public void addLine(String item, boolean isActive){
+    
     items.add(item);
     if(isActive){
       activeItem = items.size();
     }
     text(item, x, y+2);
+    fill(255);
+    ellipse(x-5, y-3, 2, 2);
+    fill(0);
     y += 17;
   }
   
@@ -24,6 +28,8 @@ public class Logger {
     y = top;
     for(String i : items){
       text(i, x, y);
+      
+      
       y += 17;
     }
   }
