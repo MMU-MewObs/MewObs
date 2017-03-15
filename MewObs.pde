@@ -15,6 +15,7 @@ PImage image,background1;
 
 void setup() {
   size(1000, 600);
+  smooth();
   frameRate(30);
   background1=loadImage("images/bg.jpg");
   background1.resize(width,height);
