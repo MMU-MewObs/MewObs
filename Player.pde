@@ -28,13 +28,13 @@ public class Player {
   
       Button play,pause;
       
-      PImage muteb,mute_click,mute_hover,mediumb,medium_click,medium_hover,loudb,loud_click,loud_hover;
+    PImage muteb,mute_click,mute_hover,mediumb,medium_click,medium_hover,loudb,loud_click,loud_hover;
     PImage play_click,play_hover,playb;
     PImage pause_click,pause_hover,pauseb;
+    PImage backb,back_click,back_hover;
+    PImage forwardb,forward_click,forward_hover;
 
   public void gui() {
-
-    
     //PLAY BUTTON
     playb=loadImage("images/play.png");
     play_click=loadImage("images/play_click.png");
@@ -75,16 +75,34 @@ public class Player {
     loud_click.resize(25,25);
     loud_hover.resize(25,25);
     
+    //BACK
+    backb=loadImage("images/back.png");
+    back_click=loadImage("images/back_click.png");
+    back_hover=loadImage("images/back_hover.png");
+    backb.resize(25,25);
+    back_click.resize(25,25);
+    back_hover.resize(25,25);
+    
+    //FORWARD
+    forwardb=loadImage("images/forward.png");
+    forward_click=loadImage("images/forward_click.png");
+    forward_hover=loadImage("images/forward_hover.png");
+    forwardb.resize(25,25);
+    forward_click.resize(25,25);
+    forward_hover.resize(25,25);
+     
+   
+    
     //****BUTTONS****
     play =gui.addButton("btnPlay")
-      .setPosition(20, 320)
+      .setPosition(35,320)
       .setImages(playb,play_hover,play_click)
       .setSize(25,25)
       .plugTo(this);
     play.getCaptionLabel();
 
     Button pause =gui.addButton("pause")
-      .setPosition(60, 320)
+      .setPosition(5, 320)
       .setImages(pauseb,pause_hover,pause_click)
       .setSize(25,25)
       .plugTo(this);
@@ -94,40 +112,38 @@ public class Player {
       .setSize(170,15)
       .setLabelVisible(false)
       .setColorBackground(0)
-      .setPosition(100, 325)
+      .setPosition(70, 325)
       .setRange(0, mov.duration());
     
     Textlabel volume = gui.addLabel("Volume:")
-        .setPosition(300,325)
-        .setSize(30,30)
+        .setPosition(245,325)
         .setColorValue(0)
         .setFont(createFont("Helvetica",13))
         .plugTo(this);
         
-    
     Button Mute =gui.addButton("mute")
       .setImages(muteb,mute_hover,mute_click)
       .setSize(25,25)
-      .setPosition(370, 320)
+      .setPosition(300, 320)
       .plugTo(this);
     Mute.getCaptionLabel();
     
     Button Medium =gui.addButton("Medium")
       .setImages(mediumb,medium_hover,medium_click)
        .setSize(25,25)
-      .setPosition(410, 320)
+      .setPosition(335, 320)
       .plugTo(this);
     Medium.getCaptionLabel();
  
     Button High =gui.addButton("High")
       .setImages(loudb,loud_hover,loud_click)
        .setSize(25,25)
-      .setPosition(450, 320)
+      .setPosition(370, 320)
       .plugTo(this);
     High.getCaptionLabel();
 
-    ScrollableList Speed = gui.addScrollableList("SpeedCtrl")
-      .setPosition(485,325)
+    ScrollableList Speed = gui.addScrollableList("SpeedControl")
+      .setPosition(400,325)
       .setSize(80,100)
       .setItemHeight(15)
       .setBarHeight(15)
@@ -137,6 +153,19 @@ public class Player {
       .addItem("Speed 2",1.99)
       .setColorBackground(0)
       .plugTo(this);
+      
+      Button Back =gui.addButton("Back")
+        .setImages(backb,back_hover,back_click)
+        .setPosition(490,320)
+        .setSize(25,25)
+        .plugTo(this);
+        
+      Button forward=gui.addButton("forward")
+        .setImages(forwardb,forward_hover,forward_click)
+        .setPosition(525,320)
+        .setSize(25,25)
+        .plugTo(this);
+        
   }
   
   public void SpeedCtrl(int n) {
@@ -165,12 +194,21 @@ public class Player {
   public void btnPlay(){
     mov.play();
   }
+  
   //NOT WORKING**
   public void slider()
   {
     mov.time();
   }
   
+  public void Back()
+  {
+   mov.jump(mov.time()-5); 
+  }
+  public void forward()
+  {
+       mov.jump(mov.time()+5); 
+  }
   
   public float getTime() {
     return mov.time();

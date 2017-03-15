@@ -4,17 +4,20 @@ import javax.swing.JOptionPane;
 public class Selector {
   File videoFile;
   File configFile;
+  File Accelerometer;
   Mode nextState;
   
   
-  ControlFont cf1 = new ControlFont(createFont("Arial", 15));
-  ControlFont cf2 = new ControlFont(createFont("Helvetica", 54));
+  ControlFont cf1 = new ControlFont(createFont("Arial", 15,true));
+  ControlFont cf2 = new ControlFont(createFont("Helvetica", 54,true));
+ 
   
   //buttons
   Textlabel title;
   Button btnVideo;
   Button btnSettings;
   Button btnNextState;
+  Button btnAccelerometer;
   
   Selector(Mode nextState) {
     background(background1);
@@ -28,8 +31,6 @@ public class Selector {
         .plugTo(this);
         
     //VIDEO BUTTON
-
-    
     btnVideo = gui.addButton("videoSelector")
       .setLabel("1) Choose Video File")
       .setPosition(150, 200)
@@ -54,14 +55,27 @@ public class Selector {
       .setColorBackground(0)
       .setSize(200, 50)
       .plugTo(this);
-
     btnNextState.getCaptionLabel().toUpperCase(true).setFont(cf1);
+    
+    btnAccelerometer=gui.addButton("AccelerometerSelector")
+      .setLabel("*) Accelometer")
+      .setPosition(923,568)
+      .setColorBackground(0)
+      .setSize(70,30)
+      .plugTo(this);
+      
+     
+      textSize(13);
+      fill(0);
+      text("PLEASE NOTE:Video and Config Files are Mandatory.If you Would Like to add Accelerometer File Please Add Here:",205,590);
+    
   }
 
   void videoSelector() {
     selectInput("Select a video to process:", "videoFileSelected", null, this);
   }
 
+   //VIDEO FILE
   void videoFileSelected(File selection) {
     if (selection != null) {
       JOptionPane.showMessageDialog(null,"File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -76,7 +90,8 @@ public class Selector {
   void configSelector() {
     selectInput("Select a video to process:", "configFileSelected", null, this);
   }
-
+  
+  //CONFIG FILE
   void configFileSelected(File selection) {
     if (selection != null) {
        JOptionPane.showMessageDialog(null,"File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -87,6 +102,23 @@ public class Selector {
       }
     }
   }
+  
+  //ACCELEROMETER VIDEO
+  void AccelerometerSelector() {
+    selectInput("Select a video Accelerometer to process:", "AccelerometerSelected", null, this);
+  }
+  
+    void AccelerometerSelected(File selection) {
+    if (selection != null) {
+       JOptionPane.showMessageDialog(null,"File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      if (isValidFileType(selection, new String[]{"csv"}) == true) {
+        Accelerometer = selection;
+      } else {
+        JOptionPane.showMessageDialog(null, "Unsupported file type", "Unsupported file type", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      }
+    }
+  }
+
 
 
 
@@ -100,6 +132,7 @@ JOptionPane.showMessageDialog(null, "Please Provide the feilds", "1 or more Feil
     btnVideo.hide();
     btnSettings.hide();
     btnNextState.hide();
+    btnAccelerometer.hide();
     refreshState(nextState);
   }
   }
