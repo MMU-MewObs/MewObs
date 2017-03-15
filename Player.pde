@@ -33,6 +33,7 @@ public class Player {
   PImage pause_click, pause_hover, pauseb;
   PImage backb, back_click, back_hover;
   PImage forwardb, forward_click, forward_hover;
+  Slider videoLength;
 
   public void gui() {
     //PLAY BUTTON
@@ -108,13 +109,16 @@ public class Player {
       .plugTo(this);
     pause.getCaptionLabel();
 
-    Slider videoLength =gui.addSlider("slider")
+    videoLength =gui.addSlider("slider")
       .setSize(170, 15)
       .setLabelVisible(false)
       .setColorBackground(0)
       .setPosition(70, 325)
       .setRange(0, mov.duration())
       .plugTo(this);
+      
+      videoLength.getValueLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
+      videoLength.getCaptionLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
 
     Textlabel volume = gui.addLabel("Volume:")
       .setPosition(245, 325)
