@@ -33,7 +33,7 @@ void refreshState(Mode newMode) {
     break;
   case PLAY:
     background(background1);
-    player = new Player(this, selector.videoFile, true, 2,2,317);
+    player = new Player(this, selector.videoFile, true, 2, 2, 317);
     recorder = new EventRecorder(selector.configFile, selector.videoFile.getName());
     break;
   }

@@ -15,8 +15,8 @@ public class EventRecorder {
   File configFile;
   Logger logger;
   EventRecorder(File configFile, String videoFileName) {
-    logger = new Logger(600, 50);
-    this.configFile = configFile; //<>//
+    logger = new Logger(600, 20);
+    this.configFile = configFile; //<>// //<>//
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath(d.getTime() + ".csv"));
@@ -120,6 +120,7 @@ public class Event {
     this.label = label;
     this.steve = steve;
     this.meg = meg;
+    
   }
 
   String getOutputString(String seperator) {
@@ -132,12 +133,8 @@ public class Event {
   
   String getGUIString(){
     String[] toWrite = new String[3];
-    toWrite[0] = label.substring(0, 1).toUpperCase() + label.substring(1).toLowerCase();
-    if(steve == "st"){
-      toWrite[1] = "State";
-    } else {
-      toWrite[1] = "Event";
-    }
+    toWrite[0] = ( steve == "eve" ? "Event: " : "State :");
+    toWrite[1] = label.substring(0, 1).toUpperCase() + label.substring(1).toLowerCase();
     toWrite[2] = meg.substring(0, 1).toUpperCase() + meg.substring(1).toLowerCase();
     return join(toWrite, "     ");
   }

@@ -23,7 +23,6 @@ public class Logger {
   public void render(){
     y = top;
     for(String i : items){
-      println(i);
       text(i, x, y);
       y += 17;
     }
