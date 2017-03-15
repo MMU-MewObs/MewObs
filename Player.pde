@@ -147,6 +147,7 @@ public class Player {
       .setSize(80,100)
       .setItemHeight(15)
       .setBarHeight(15)
+      .setOpen(false)
       .addItem("Speed 0.5", 0.5)
       .addItem("Speed 1",0.99)
       .addItem("Speed 1.5", 1.5) 
@@ -218,6 +219,11 @@ public class Player {
     return mov.duration();
   }
 
+void keyPressed(){
+  if(key==27)
+    key=0;
+}
+
   public void render() {
     if (mov.available() == true) {
       mov.read();
@@ -225,4 +231,5 @@ public class Player {
     }
     image(mov, x, y, ratio * ySize, ySize);
   }
+  
 }

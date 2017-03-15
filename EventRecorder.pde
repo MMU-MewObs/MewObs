@@ -16,14 +16,15 @@ public class EventRecorder {
   Logger logger;
   EventRecorder(File configFile, String videoFileName) {
     logger = new Logger(600, 20);
-    this.configFile = configFile; //<>// //<>//
+    this.configFile = configFile; //<>// //<>// //<>//
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath(d.getTime() + ".csv"));
-    if(!outputFile.exists()){
+    if (!outputFile.exists()) {
       try {
         outputFile.createNewFile();
-      } catch (IOException err){
+      } 
+      catch (IOException err) {
         println("Error occoured trying to create file");
         err.printStackTrace();
       }
@@ -54,16 +55,33 @@ public class EventRecorder {
       err.printStackTrace();
     }
   }
-  
-  public void render(){
+
+  public void render() {
+    int y=300;
+    int x=100;
     logger.render();
+
+    for (Event e : events)
+    { 
+      textSize(13);
+      fill(0);
+      text("Keys Used: "+ e.keyStroke+e.label, 10, y);
+      y+=15;
+
+      if (events.size()>=30)
+      {
+        textSize(13);
+        fill(0);
+        text("Keys Used: "+ e.keyStroke, x, y);
+      }
+    }
   }
 
   public void keyEvent(char k, float time, float duration) {
-    if(k == 'x'){
+    if (k == 'x') {
       saveFile();
     }
-     //make this a dynamic key
+    //make this a dynamic key
     for (Event e : events) {
       if (e.keyStroke == k) {
         // dont break out of loop incase multiple steves are required for a single keystokes
@@ -78,22 +96,21 @@ public class EventRecorder {
       }
     }
   }
-  
+
   public void keyEvent(boolean k, float time, float duration) {
-    
   }
-  
-  public void saveFile(){
+
+  public void saveFile() {
     selectFolder("Choose output location:", "outputDirectorySelected", null, this);
   }
-  
-  public void outputDirectorySelected(File selection){
+
+  public void outputDirectorySelected(File selection) {
     if (selection != null) {
       String outputFileName = JOptionPane.showInputDialog(null, "Choose output file name", videoFileName.replaceFirst("[.][^.]+$", "") + "_" + configFile.getName().replaceFirst("[.][^.]+$", ""));
       File renamedOutput = new File(selection.getAbsolutePath()+ "/" + outputFileName + ".csv");
-      if(outputFileName != null){
+      if (outputFileName != null) {
         println(renamedOutput.getAbsolutePath());
-        if(renamedOutput.exists() == true && JOptionPane.showConfirmDialog(null, "File already exists, do you want to overwrite it?", "Override File", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION){
+        if (renamedOutput.exists() == true && JOptionPane.showConfirmDialog(null, "File already exists, do you want to overwrite it?", "Override File", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
           JOptionPane.showMessageDialog(null, "Cancelled saving file", "Cancelled saving file", javax.swing.JOptionPane.INFORMATION_MESSAGE);
           return;
         }
@@ -101,10 +118,11 @@ public class EventRecorder {
           output.flush();
           output.close();
           outputFile.renameTo(renamedOutput);
-        } catch (IOException err){
+        } 
+        catch (IOException err) {
           println("Error occoured trying to write to file");
           err.printStackTrace();
-        }        
+        }
       } else {
         JOptionPane.showMessageDialog(null, "Input failed", "File name cannot be empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       }
@@ -131,8 +149,8 @@ public class Event {
     toWrite[2] = meg;
     return join(toWrite, seperator);
   }
-  
-  String getGUIString(){
+
+  String getGUIString() {
     String[] toWrite = new String[3];
     toWrite[0] = ( steve == "eve" ? "Event: " : "State :");
     toWrite[1] = label.substring(0, 1).toUpperCase() + label.substring(1).toLowerCase();
