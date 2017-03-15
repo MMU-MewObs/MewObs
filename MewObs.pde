@@ -11,14 +11,14 @@ Mode currentMode = Mode.SELECTOR;
 Selector selector;
 Player player;
 EventRecorder recorder;
-PImage image,background1;
+PImage image, background1;
 
 void setup() {
   size(1000, 600);
   smooth();
   frameRate(30);
   background1=loadImage("images/bg.jpg");
-  background1.resize(width,height);
+  background1.resize(width, height);
   gui = new ControlP5(this);
   refreshState(Mode.SELECTOR);
 }

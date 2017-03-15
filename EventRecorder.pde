@@ -16,7 +16,7 @@ public class EventRecorder {
   Logger logger;
   EventRecorder(File configFile, String videoFileName) {
     logger = new Logger(600, 20);
-    this.configFile = configFile; //<>// //<>// //<>//
+    this.configFile = configFile; //<>//
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath(d.getTime() + ".csv"));
@@ -50,7 +50,8 @@ public class EventRecorder {
       output = new FileWriter(outputFile.getAbsolutePath(), true);
       output.write("label, steve, meg, time, duration," + userVars +  "\n" );
       output.flush();
-    } catch(IOException err) {
+    } 
+    catch(IOException err) {
       println("Couldn't get output file.");
       err.printStackTrace();
     }
@@ -61,25 +62,23 @@ public class EventRecorder {
     int x=10;
     int rows=0;
     logger.render();
-    
+
     for (Event e : events)
     { 
       textSize(15);
       fill(0);
-      text("Keys Used in this File:",170,360);
+      text("Keys Used in this File:", 170, 360);
       textSize(12);
       fill(0);
       text(e.keyStroke+")"+" "+e.label, x, y);
       y+=15;
       rows++;
-      
-      if (rows==14)
-      {
+
+      if (rows==14) {
         rows=0;
         x=x+155;
         y=380;
       }
-      
     }
   }
 
@@ -95,7 +94,8 @@ public class EventRecorder {
           output.write(e.getOutputString(",") + "," + time + "," + duration + "," + userVars +  "\n" );
           output.flush();
           logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), true);
-        } catch (IOException err){
+        } 
+        catch (IOException err) {
           println("Error occoured trying to write to file");
           err.printStackTrace();
         }
