@@ -56,23 +56,29 @@ public class EventRecorder {
   }
 
   public void render() {
-    int y=300;
-    int x=100;
+    int y=380;
+    int x=10;
+    int rows=0;
     logger.render();
-
+    
     for (Event e : events)
     { 
-      textSize(13);
+      textSize(15);
       fill(0);
-      text("Keys Used: "+ e.keyStroke+e.label, 10, y);
+      text("Keys Used in this File:",170,360);
+      textSize(12);
+      fill(0);
+      text(e.keyStroke+")"+" "+e.label, x, y);
       y+=15;
-
-      if (events.size()>=30)
+      rows++;
+      
+      if (rows==14)
       {
-        textSize(13);
-        fill(0);
-        text("Keys Used: "+ e.keyStroke, x, y);
+        rows=0;
+        x=x+155;
+        y=380;
       }
+      
     }
   }
 

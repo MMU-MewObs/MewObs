@@ -23,8 +23,6 @@ void setup() {
   refreshState(Mode.SELECTOR);
 }
 
-//ControlFont cf1 = new ControlFont(createFont("Arial", 15));
-
 void refreshState(Mode newMode) {
   currentMode = newMode;
   switch(newMode) {
