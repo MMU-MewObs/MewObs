@@ -15,6 +15,7 @@ PImage image,background1;
 
 void setup() {
   size(1000, 600);
+  frameRate(30);
   background1=loadImage("images/bg.jpg");
   background1.resize(width,height);
   gui = new ControlP5(this);
@@ -31,6 +32,7 @@ void refreshState(Mode newMode) {
     selector = new Selector(Mode.PLAY);
     break;
   case PLAY:
+    background(background1);
     player = new Player(this, selector.videoFile, true, 2,2,317);
     recorder = new EventRecorder(selector.configFile, selector.videoFile.getName());
     break;
@@ -45,7 +47,6 @@ void keyPressed() {
     break;
   case PLAY:
     recorder.keyEvent(key, player.getTime(), player.getDuration());
-    
     break;
   }
 }
@@ -59,6 +60,7 @@ void draw() {
   case PLAY:
     background(background1);
     player.render();
+    recorder.render();
     break;
   }
 }

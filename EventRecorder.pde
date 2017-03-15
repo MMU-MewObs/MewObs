@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.*;
 
 final int STEVE = 1;
 final int GROUP = 2;
@@ -7,14 +8,15 @@ final int OTHER = 4;
 
 public class EventRecorder {
   ArrayList<Event> events;
-  //ArrayList<Log> logs;
   String userVars;
   String videoFileName;
   FileWriter output;
   File outputFile;
   File configFile;
+  Logger logger;
   EventRecorder(File configFile, String videoFileName) {
-    this.configFile = configFile;
+    logger = new Logger(600, 50);
+    this.configFile = configFile; //<>//
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath(d.getTime() + ".csv"));
@@ -34,13 +36,13 @@ public class EventRecorder {
       String[] row = (x.split(","));
       switch(Integer.valueOf((row[0]))) {
       case STEVE:
-        events.add(new Event(row[1], row[2], row[3], row[4]));
+        events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
         break;
       case GROUP:
         userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
         break;
       case LOG:
-        events.add(new Event(row[1], row[2], row[3], row[4]));
+        events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
       }
     }
     try {
@@ -50,8 +52,12 @@ public class EventRecorder {
       err.printStackTrace();
     }
   }
+  
+  public void render(){
+    logger.render();
+  }
 
-  public void keyEvent(Character k, float time, float duration) {
+  public void keyEvent(char k, float time, float duration) {
     if(k == 'x'){
       saveFile();
     }
@@ -59,16 +65,20 @@ public class EventRecorder {
     for (Event e : events) {
       if (e.keyStroke == k) {
         // dont break out of loop incase multiple steves are required for a single keystokes
-        println(e.getOutputString());
         try {
-          output.write(e.getOutputString() + "," + time + "," + duration + "," + userVars +  "\n" );
+          output.write(e.getOutputString(",") + "," + time + "," + duration + "," + userVars +  "\n" );
           output.flush();
+          logger.addLine(e.getGUIString() + "     " + time, true);
         } catch (IOException err){
           println("Error occoured trying to write to file");
           err.printStackTrace();
         }
       }
     }
+  }
+  
+  public void keyEvent(boolean k, float time, float duration) {
+    
   }
   
   public void saveFile(){
@@ -103,20 +113,32 @@ public class EventRecorder {
 }
 
 public class Event {
-  Object keyStroke;
+  char keyStroke;
   String label, steve, meg;
-  Event(Object keyStroke, String label, String steve, String meg) {
+  Event(char keyStroke, String label, String steve, String meg) {
     this.keyStroke = keyStroke;
     this.label = label;
     this.steve = steve;
     this.meg = meg;
   }
 
-  String getOutputString() {
+  String getOutputString(String seperator) {
     String[] toWrite = new String[3];
     toWrite[0] = label;
     toWrite[1] = steve;
     toWrite[2] = meg;
-    return join(toWrite, ",");
+    return join(toWrite, seperator);
+  }
+  
+  String getGUIString(){
+    String[] toWrite = new String[3];
+    toWrite[0] = label.substring(0, 1).toUpperCase() + label.substring(1).toLowerCase();
+    if(steve == "st"){
+      toWrite[1] = "State";
+    } else {
+      toWrite[1] = "Event";
+    }
+    toWrite[2] = meg.substring(0, 1).toUpperCase() + meg.substring(1).toLowerCase();
+    return join(toWrite, "     ");
   }
 }

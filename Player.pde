@@ -16,7 +16,6 @@ public class Player {
     this.x = x;
     this.y = y;
     this.ySize = ySize;
-    background(0);
     mov = new Movie(app, video.getAbsolutePath());
     mov.play();
     mov.jump(0);
