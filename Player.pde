@@ -223,14 +223,14 @@ public class Player {
     
     Chart myChart;
     myChart = gui.addChart("acccelerometerChart")
-                 .setPosition(50, 50)
-                 .setSize(200, 100)
+                 .setPosition(5, 365)
+                 .setSize(560, 220)
                  .setRange(-max, max)
+                 .setCaptionLabel("")
                  .setView(Chart.LINE)
                  .setStrokeWeight(1.5)
-                 .setColorCaptionLabel(color(40))
-                 .plugTo(this)
-                 ;
+                 .plugTo(this);
+                 
   
     myChart.addDataSet("accelX");
     myChart.setData("accelX", accDataX.array());

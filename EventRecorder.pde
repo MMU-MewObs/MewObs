@@ -13,10 +13,12 @@ public class EventRecorder {
   FileWriter output;
   File outputFile;
   File configFile;
+  File Accelerometer;
   Logger logger;
-  EventRecorder(File configFile, String videoFileName) {
-    logger = new Logger(600, 40);
+  EventRecorder(File configFile, String videoFileName, File Accelerometer) {
+    logger = new Logger(600, 40); //<>// //<>//
     this.configFile = configFile;
+    this.Accelerometer = Accelerometer;
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath("logs/" + d.getTime() + ".csv"));
@@ -70,8 +72,10 @@ public class EventRecorder {
     text(userVars, 620, 20);
     logger.render();
 
-    for (Event e : events)
-    { 
+for (Event e : events){
+  
+if(Accelerometer==null)
+{
       textSize(15);
       fill(0);
       text("Keys Used in this File:", 170, 360);
@@ -86,7 +90,31 @@ public class EventRecorder {
         x=x+155;
         y=380;
       }
+  }
+  else
+  {
+    
+      textSize(15);
+      fill(0);
+      text("Accelerometer File:", 170, 360);
+    
+    
+      textSize(15);
+      fill(0);
+      text("Keys Used in this File:", 700, 360);
+      textSize(12);
+      fill(0);
+      text(e.keyStroke+")"+" "+e.label, x+600, y);
+      y+=15;
+      rows++;
+
+      if (rows==14) {
+        rows=0;
+        x=x+155;
+        y=380;
+      }
     }
+  }
   }
 
   public void updateLogEvents(float vidTime) {
