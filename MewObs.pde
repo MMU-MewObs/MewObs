@@ -59,6 +59,7 @@ void draw() {
   case PLAY:
     background(background1);
     player.render();
+    recorder.updateLogEvents(player.getTime());
     recorder.render();
     break;
   }

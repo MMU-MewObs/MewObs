@@ -15,7 +15,7 @@ public class EventRecorder {
   File configFile;
   Logger logger;
   EventRecorder(File configFile, String videoFileName) {
-    logger = new Logger(600, 20);
+    logger = new Logger(600, 40);
     this.configFile = configFile; //<>//
     Date d = new Date();
     new File(dataPath("")).mkdirs();
@@ -61,6 +61,7 @@ public class EventRecorder {
     int y=380;
     int x=10;
     int rows=0;
+    text(userVars, 620, 20);
     logger.render();
 
     for (Event e : events)
@@ -81,6 +82,10 @@ public class EventRecorder {
       }
     }
   }
+  
+  public void updateLogEvents(float vidTime){
+    logger.updateActiveItem(vidTime);
+  }
 
   public void keyEvent(char k, float time, float duration) {
     if (k == 'x') {
@@ -93,7 +98,7 @@ public class EventRecorder {
         try {
           output.write(e.getOutputString(",") + "," + time + "," + duration + "," + userVars +  "\n" );
           output.flush();
-          logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), true);
+          logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), 0, true);
         } 
         catch (IOException err) {
           println("Error occoured trying to write to file");
@@ -102,10 +107,6 @@ public class EventRecorder {
       }
     }
   }
-
-  public void keyEvent(boolean k, float time, float duration) {
-  }
-
   public void saveFile() {
     selectFolder("Choose output location:", "outputDirectorySelected", null, this);
   }
