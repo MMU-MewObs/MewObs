@@ -8,7 +8,7 @@ public class Logger {
   }
   
   public void addLine(String item, float startTime, boolean isActive) {
-    if(items.size()>20){
+    if(items.size()>17){
       items.remove(0);
     }
     
