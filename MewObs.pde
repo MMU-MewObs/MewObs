@@ -17,7 +17,7 @@ void setup() {
   size(1000, 600);
   smooth();
   frameRate(30);
-  background1=loadImage("images/bg.jpg");
+  background1=loadImage(dataPath("images/bg.jpg"));
   background1.resize(width, height);
   gui = new ControlP5(this);
   refreshState(Mode.SELECTOR);

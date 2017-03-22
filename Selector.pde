@@ -8,6 +8,7 @@ public class Selector {
   Mode nextState;
 
   ControlFont cf1 = new ControlFont(createFont("Arial", 15, true));
+   ControlFont cf3 = new ControlFont(createFont("Arial", 10, true));
   ControlFont cf2 = new ControlFont(createFont("Helvetica", 54, true));
 
   //buttons
@@ -56,12 +57,12 @@ public class Selector {
     btnNextState.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
     btnAccelerometer=gui.addButton("AccelerometerSelector")
-      .setLabel("*) Accelometer")
+      .setLabel("*Accelometer*")
       .setPosition(880,550)
       .setColorBackground(0)
       .setSize(100, 40)
       .plugTo(this);
-  btnNextState.getCaptionLabel().toUpperCase(true).setFont(cf1);
+  btnAccelerometer.getCaptionLabel().toUpperCase(true).setFont(cf3);
 
 
     textSize(14);

@@ -42,65 +42,67 @@ public class Player {
   Slider videoLength;
 
   public void gui() {
+    
     //PLAY BUTTON
-    playb=loadImage("images/play.png");
-    play_click=loadImage("images/play_click.png");
-    play_hover=loadImage("images/play_hover.png");
+    
+    playb=loadImage(dataPath("images/play.png"));
+    play_click=loadImage(dataPath("images/play_click.png"));
+    play_hover=loadImage(dataPath("images/play_hover.png"));
     playb.resize(25, 25);
     play_click.resize(25, 25);
     play_hover.resize(25, 25);
 
     //PAUSE BUTTON
-    pauseb=loadImage("images/pause.png");
-    pause_click=loadImage("images/pause_click.png");
-    pause_hover=loadImage("images/pause_hover.png");
+    pauseb=loadImage(dataPath("images/pause.png"));
+    pause_click=loadImage(dataPath("images/pause_click.png"));
+    pause_hover=loadImage(dataPath("images/pause_hover.png"));
     pauseb.resize(25, 25);
     pause_click.resize(25, 25);
     pause_hover.resize(25, 25);
 
     //MUTE
-    muteb=loadImage("images/mute.png");
-    mute_click=loadImage("images/mute_click.png");
-    mute_hover=loadImage("images/mute_hover.png");
+    muteb=loadImage(dataPath("images/mute.png"));
+    mute_click=loadImage(dataPath("images/mute_click.png"));
+    mute_hover=loadImage(dataPath("images/mute_hover.png"));
     muteb.resize(25, 25);
     mute_click.resize(25, 25);
     mute_hover.resize(25, 25);
 
     //MEDIUM
-    mediumb=loadImage("images/medium.png");
-    medium_click=loadImage("images/medium_click.png");
-    medium_hover=loadImage("images/medium_hover.png");
+    mediumb=loadImage(dataPath("images/medium.png"));
+    medium_click=loadImage(dataPath("images/medium_click.png"));
+    medium_hover=loadImage(dataPath("images/medium_hover.png"));
     mediumb.resize(25, 25);
     medium_click.resize(25, 25);
     medium_hover.resize(25, 25);
 
     //LOUD
-    loudb=loadImage("images/loud.png");
-    loud_click=loadImage("images/loud_click.png");
-    loud_hover=loadImage("images/loud_hover.png");
+    loudb=loadImage(dataPath("images/loud.png"));
+    loud_click=loadImage(dataPath("images/loud_click.png"));
+    loud_hover=loadImage(dataPath("images/loud_hover.png"));
     loudb.resize(25, 25);
     loud_click.resize(25, 25);
     loud_hover.resize(25, 25);
 
     //BACK
-    backb=loadImage("images/back.png");
-    back_click=loadImage("images/back_click.png");
-    back_hover=loadImage("images/back_hover.png");
+    backb=loadImage(dataPath("images/back.png"));
+    back_click=loadImage(dataPath("images/back_click.png"));
+    back_hover=loadImage(dataPath("images/back_hover.png"));
     backb.resize(25, 25);
     back_click.resize(25, 25);
     back_hover.resize(25, 25);
 
     //FORWARD
-    forwardb=loadImage("images/forward.png");
-    forward_click=loadImage("images/forward_click.png");
-    forward_hover=loadImage("images/forward_hover.png");
+    forwardb=loadImage(dataPath("images/forward.png"));
+    forward_click=loadImage(dataPath("images/forward_click.png"));
+    forward_hover=loadImage(dataPath("images/forward_hover.png"));
     forwardb.resize(25, 25);
     forward_click.resize(25, 25);
     forward_hover.resize(25, 25);
 
-    screenb=loadImage("images/no.png");
-    screen_click=loadImage("images/no_click.png");
-    screen_hover=loadImage("images/no_hover.png");
+    screenb=loadImage(dataPath("images/screen.png"));
+    screen_click=loadImage(dataPath("images/screen_click.png"));
+    screen_hover=loadImage(dataPath("images/screen_hover.png"));
     screenb.resize(55, 55);
     screen_click.resize(55, 55);
     screen_hover.resize(55, 55);
@@ -247,9 +249,10 @@ public class Player {
   
   public void screenshot()
   {
-     //selectFolder("Choose output location:", "outputDirectorySelected", null, this);
-     saveFrame();   
-     
+    String desktopPath=System.getProperty("user.home")+"/Desktop";
+    saveFrame( System.getProperty("user.home") + "/Desktop/mewobs_####.png");
+    
+   
   }
   
   public void SpeedCtrl(int n) {
@@ -301,6 +304,7 @@ public class Player {
   public float getDuration() {
     return mov.duration();
   }
+
 
   void keyPressed() {
     if (key==27)
