@@ -57,15 +57,16 @@ public class Selector {
 
     btnAccelerometer=gui.addButton("AccelerometerSelector")
       .setLabel("*) Accelometer")
-      .setPosition(923, 568)
+      .setPosition(880,550)
       .setColorBackground(0)
-      .setSize(70, 30)
+      .setSize(100, 40)
       .plugTo(this);
+  btnNextState.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
 
-    textSize(13);
+    textSize(14);
     fill(0);
-    text("PLEASE NOTE:Video and Config Files are Mandatory.If you Would Like to add Accelerometer File Please Add Here:", 205, 590);
+    text("PLEASE NOTE:Video and Config Files are Mandatory.If you Would Like to add Accelerometer File Please Add Here:", 100, 575);
   }
 
   void videoSelector() {
