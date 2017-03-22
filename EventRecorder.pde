@@ -37,9 +37,15 @@ public class EventRecorder {
       String[] row = (x.split(","));
       switch(Integer.valueOf((row[0]))) {
       case STEVE:
+        if(row[2] == "na"){
+           break;
+        }
         events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
         break;
       case GROUP:
+        if(row[2] == "na"){
+           break;
+        }
         userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
         break;
       case LOG:
