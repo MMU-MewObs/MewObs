@@ -19,7 +19,7 @@ public class EventRecorder {
     this.configFile = configFile;
     Date d = new Date();
     new File(dataPath("")).mkdirs();
-    this.outputFile = new File(dataPath(d.getTime() + ".csv"));
+    this.outputFile = new File(dataPath("logs/" + d.getTime() + ".csv"));
     if (!outputFile.exists()) {
       try {
         outputFile.createNewFile();
