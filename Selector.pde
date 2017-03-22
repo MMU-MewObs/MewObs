@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 public class Selector {
   File videoFile;
   File configFile;
-  File Accelerometer;
+  File accelerometerFile;
   Mode nextState;
 
   ControlFont cf1 = new ControlFont(createFont("Arial", 15, true));
@@ -110,7 +110,7 @@ public class Selector {
     if (selection != null) {
       JOptionPane.showMessageDialog(null, "File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       if (isValidFileType(selection, new String[]{"csv"}) == true) {
-        Accelerometer = selection;
+        accelerometerFile = selection;
       } else {
         JOptionPane.showMessageDialog(null, "Unsupported file type", "Unsupported file type", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       }

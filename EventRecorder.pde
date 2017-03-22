@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.*; //<>//
 import java.lang.*;
 
 final int STEVE = 1;
@@ -16,7 +16,7 @@ public class EventRecorder {
   Logger logger;
   EventRecorder(File configFile, String videoFileName) {
     logger = new Logger(600, 40);
-    this.configFile = configFile; //<>//
+    this.configFile = configFile;
     Date d = new Date();
     new File(dataPath("")).mkdirs();
     this.outputFile = new File(dataPath(d.getTime() + ".csv"));
@@ -82,8 +82,8 @@ public class EventRecorder {
       }
     }
   }
-  
-  public void updateLogEvents(float vidTime){
+
+  public void updateLogEvents(float vidTime) {
     logger.updateActiveItem(vidTime);
   }
 
@@ -98,7 +98,7 @@ public class EventRecorder {
         try {
           output.write(e.getOutputString(",") + "," + time + "," + duration + "," + userVars +  "\n" );
           output.flush();
-          logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), 0, true);
+          logger.addLine(e.getGUIString() + "     " + secondsToMMSS((int)time), time, true);
         } 
         catch (IOException err) {
           println("Error occoured trying to write to file");

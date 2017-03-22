@@ -7,11 +7,13 @@ public class Player {
   boolean autoplay = true;
   PApplet app;
 
-  File videoFile;
+  File videoFile, accelerometerFile;
 
-  Player(PApplet papp, File video, Boolean autoplay, int x, int y, int ySize) {
+  Player(PApplet papp, File video, File accelerometerFile, Boolean autoplay, int x, int y, int ySize) {
     app = papp;
     videoFile = video;
+    this.accelerometerFile = accelerometerFile;
+    
     this.autoplay = autoplay;
     this.x = x;
     this.y = y;
@@ -24,6 +26,9 @@ public class Player {
     }
     render();
     gui();
+    if(accelerometerFile != null){
+      renderBarChart();
+    }
   }
 
   Button play, pause;
@@ -191,6 +196,55 @@ public class Player {
        .plugTo(this);
   }
   
+  
+  public void renderBarChart(){
+    ArrayList<String> data = new ArrayList<String>(Arrays.asList(loadStrings(accelerometerFile.getAbsolutePath())));
+    data.remove(0); //remove first row of column headings
+    
+    FloatList accDataX = new FloatList(), accDataY = new FloatList(), accDataZ = new FloatList();
+    
+    for (String x : data) {
+      String[] row = (x.split(","));
+      accDataX.append(Float.valueOf(row[0]));
+      accDataY.append(Float.valueOf(row[1]));
+      accDataZ.append(Float.valueOf(row[2]));
+    }
+    
+    float max;
+    if(accDataX.max() > accDataY.max() && accDataX.max() > accDataZ.max()){
+      max = accDataX.max();
+    } else if(accDataY.max() > accDataX.max() && accDataY.max() > accDataZ.max()){
+      max = accDataY.max();
+    } else {
+      max = accDataZ.max();
+    }
+    
+    Chart myChart;
+    myChart = gui.addChart("acccelerometerChart")
+                 .setPosition(50, 50)
+                 .setSize(200, 100)
+                 .setRange(-max, max)
+                 .setView(Chart.LINE)
+                 .setStrokeWeight(1.5)
+                 .setColorCaptionLabel(color(40))
+                 .plugTo(this)
+                 ;
+  
+    myChart.addDataSet("accelX");
+    myChart.setData("accelX", accDataX.array());
+    
+    myChart.addDataSet("accelY");
+    myChart.setData("accelY", accDataY.array());
+    
+    myChart.addDataSet("accelZ");
+    myChart.setData("accelZ", accDataZ.array());
+  }
+  
+  public void acccelerometerChart(){
+    println("hit");
+  }
+  
+  
   public void screenshot()
   {
      //selectFolder("Choose output location:", "outputDirectorySelected", null, this);
@@ -198,7 +252,7 @@ public class Player {
      
   }
   
-    public void SpeedCtrl(int n) {
+  public void SpeedCtrl(int n) {
     mov.speed((float)gui.get(ScrollableList.class, "SpeedCtrl").getItem(n).get("value"));
   }
   

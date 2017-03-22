@@ -8,6 +8,11 @@ public class Logger {
   }
   
   public void addLine(String item, float startTime, boolean isActive) {
+    if(items.size()>20){
+      items.remove(0);
+    }
+    
+    
     items.add(new Entry(item, startTime));
     if (isActive) {
       activeItem = items.size()-1;
@@ -19,9 +24,9 @@ public class Logger {
     y += 17;
   }
   
-  public void updateActiveItem(float elapsedTime){
+  public void updateActiveItem(float videoTime){
     if(activeItem > -1){
-      items.get(activeItem).elapsedTime = elapsedTime - items.get(activeItem).startTime;
+      items.get(activeItem).elapsedTime = videoTime - items.get(activeItem).startTime;
     }
   }
 
