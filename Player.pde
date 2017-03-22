@@ -242,6 +242,7 @@ public class Player {
     myChart.setData("accelZ", accDataZ.array());
   }
   
+
   public void acccelerometerChart(){
     println("hit");
   }

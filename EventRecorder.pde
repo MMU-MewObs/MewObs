@@ -37,16 +37,16 @@ public class EventRecorder {
       String[] row = (x.split(","));
       switch(Integer.valueOf((row[0]))) {
       case STEVE:
-        if(row[2] == "na"){
-           break;
+        println(row[3]);
+        if(!row[2].trim().equalsIgnoreCase("na")){
+           events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
         }
-        events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
         break;
       case GROUP:
-        if(row[2] == "na"){
-           break;
+        if(!row[2].trim().equalsIgnoreCase("na")){
+          userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
         }
-        userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
+        
         break;
       case LOG:
         events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));

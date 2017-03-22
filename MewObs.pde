@@ -4,7 +4,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 enum Mode {
-  LAUNCH, SELECTOR, PLAY
+  LAUNCH, SELECTOR, PLAY, MAKER
 }
 Mode currentMode = Mode.SELECTOR;
 
