@@ -33,6 +33,7 @@ public class Player {
   PImage pause_click, pause_hover, pauseb;
   PImage backb, back_click, back_hover;
   PImage forwardb, forward_click, forward_hover;
+  PImage screenb,screen_click,screen_hover;
   Slider videoLength;
 
   public void gui() {
@@ -92,6 +93,14 @@ public class Player {
     forward_click.resize(25, 25);
     forward_hover.resize(25, 25);
 
+    screenb=loadImage("images/no.png");
+    screen_click=loadImage("images/no_click.png");
+    screen_hover=loadImage("images/no_hover.png");
+    screenb.resize(55, 55);
+    screen_click.resize(55, 55);
+    screen_hover.resize(55, 55);
+
+  
 
 
     //****BUTTONS****
@@ -171,9 +180,25 @@ public class Player {
       .setPosition(525, 320)
       .setSize(25, 25)
       .plugTo(this);
+      
+      Boolean save;
+      
+     Button screenshot=gui.addButton("screenshot")
+       .setImages(screenb,screen_hover,screen_click)
+       .setPosition(945,545)
+       .setSize(55,55)
+       .setColorBackground(0)
+       .plugTo(this);
   }
-
-  public void SpeedCtrl(int n) {
+  
+  public void screenshot()
+  {
+     //selectFolder("Choose output location:", "outputDirectorySelected", null, this);
+     saveFrame();   
+     
+  }
+  
+    public void SpeedCtrl(int n) {
     mov.speed((float)gui.get(ScrollableList.class, "SpeedCtrl").getItem(n).get("value"));
   }
   
