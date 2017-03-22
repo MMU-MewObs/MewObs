@@ -306,9 +306,11 @@ public class Player {
   }
 
 
-  void keyPressed() {
-    if (key==27)
-      key=0;
+  void keyPressed() {    
+    if (key == ESC) 
+    {
+      key = 0;
+    }
   }
 
   public void render() {
