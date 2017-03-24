@@ -24,8 +24,8 @@ public class Player {
     if (autoplay == false) {
       pause();
     }
-    render();
     gui();
+    render(); 
     if(accelerometerFile != null){
       renderBarChart();
     }
@@ -283,10 +283,9 @@ public class Player {
     mov.play();
   }
 
-  //NOT WORKING**
   public void slider(float value)
   {
-    mov.jump(value);
+    //mov.jump(value);
   }
 
   public void Back()
@@ -316,6 +315,7 @@ public class Player {
 
   public void render() {
     if (mov.available() == true) {
+      videoLength.setValue(mov.time());
       mov.read();
       ratio = (float) mov.width / mov.height;
     }
