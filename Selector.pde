@@ -57,7 +57,7 @@ public class Selector {
     btnNextState.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
     btnAccelerometer=gui.addButton("AccelerometerSelector")
-      .setLabel("*Accelometer*")
+      .setLabel("*Accelerometer*")
       .setPosition(880,550)
       .setColorBackground(0)
       .setSize(100, 40)
@@ -67,7 +67,7 @@ public class Selector {
 
     textSize(14);
     fill(0);
-    text("PLEASE NOTE:Video and Config Files are Mandatory.If you Would Like to add Accelerometer File Please Add Here:", 100, 575);
+    text("Video and config files are mandatory. If you would like to view an accelerometer file you can add it here:", 160, 575);
   }
 
   void videoSelector() {
@@ -93,7 +93,7 @@ public class Selector {
   //CONFIG FILE
   void configFileSelected(File selection) {
     if (selection != null) {
-      JOptionPane.showMessageDialog(null, "File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(null, "File chosen successfully. If you need to select a different file click again","File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       if (isValidFileType(selection, new String[]{"csv"}) == true) {
         configFile = selection;
       } else {
@@ -109,7 +109,7 @@ public class Selector {
 
   void AccelerometerSelected(File selection) {
     if (selection != null) {
-      JOptionPane.showMessageDialog(null, "File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(null, "File chosen successfully. If you need to select a different file click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       if (isValidFileType(selection, new String[]{"csv"}) == true) {
         accelerometerFile = selection;
       } else {
@@ -124,7 +124,7 @@ public class Selector {
   void toNextState() {
     if (configFile ==null || videoFile==null)
     { 
-      JOptionPane.showMessageDialog(null, "Please Provide the feilds", "1 or more Feilds Empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(null, "Please Provide the fields", "1 or more Fields Empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     } else {
       surface.setTitle(configFile.getName().replaceFirst("[.][^.]+$", ""));
       title.hide();
