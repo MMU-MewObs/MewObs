@@ -6,6 +6,8 @@ public class ConfigMaker{
   String prefix = "enterControl_";
   ControlFont cf1 = new ControlFont(createFont("Arial", 15, true));
   
+  ArrayList<Integer> rows;
+  
   ConfigMaker(PApplet app){
     papp = app;
     textSize(15);
@@ -13,11 +15,12 @@ public class ConfigMaker{
     text("Label", x + 70, 80);
     text("Steve", x + 290, 80);
     text("MEG", x + 510, 80);
+    rows = new ArrayList<Integer>();
     drawNewRow();
   }
   
   public void drawNewRow(){
-    gui.addTextfield(prefix + index +  "key")
+    gui.addTextfield(prefix + index +  "_key")
       .setPosition(x, y)
       .setSize(50,20)
       .setFocus(true)
@@ -25,27 +28,33 @@ public class ConfigMaker{
       .setCaptionLabel("") 
       .plugTo(this);
       
-    gui.addTextfield(prefix + index +  "label")
+    gui.addTextfield(prefix + index +  "_label")
       .setPosition(x + 70, y)
       .setSize(200,20)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
       
-    gui.addTextfield(prefix + index +  "steve")
+    gui.addTextfield(prefix + index +  "_steve")
       .setPosition(x + 290, y)
       .setSize(200,20)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
     
-    gui.addTextfield(prefix + index +  "meg")
+    gui.addTextfield(prefix + index +  "_meg")
       .setPosition(x + 510, y)
       .setSize(200, 20)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
+      
+    gui.addButton(prefix + index +  "_remove")
+      .setPosition(x + 720, y)
+      .setFont(cf1)
+      .setLabel("Remove");
     
+    rows.add(index);
     index++;
     y+= 30;
     drawAddButton();

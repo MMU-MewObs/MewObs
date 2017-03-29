@@ -105,7 +105,7 @@ public class Selector {
   void configFileSelected(File selection) {
     if (selection != null) {
       JOptionPane.showMessageDialog(null, "File chosen successfully. If you need to select a different file click again","File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-      if (isValidFileType(selection, new String[]{"csv"}) == true)//**Supported config Files {
+      if (isValidFileType(selection, new String[]{"csv", "txt"}) == true)//**Supported config Files {
         configFile = selection;
       } else {//Error message
         JOptionPane.showMessageDialog(null, "Unsupported file type", "Unsupported file type", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -136,7 +136,7 @@ public class Selector {
     { 
       JOptionPane.showMessageDialog(null, "Please Provide the fields", "1 or more Fields Empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     } else {
-      surface.setTitle(configFile.getName().replaceFirst("[.][^.]+$", ""));
+      surface.setTitle("MewObs - " + configFile.getName().replaceFirst("[.][^.]+$", ""));
       //Hiding the Selector Gui
       title.hide();
       btnVideo.hide();
