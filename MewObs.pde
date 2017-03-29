@@ -6,11 +6,13 @@ import javax.swing.JOptionPane;
 enum Mode {
   LAUNCH, SELECTOR, PLAY, MAKER
 }
-Mode currentMode = Mode.SELECTOR;
+Mode currentMode;
 
 Selector selector;
 Player player;
 EventRecorder recorder;
+ConfigMaker maker;
+
 PImage image, background1;
 
 void setup() {
@@ -34,7 +36,9 @@ void refreshState(Mode newMode) {
     background(background1);
     player = new Player(this, selector.videoFile, selector.accelerometerFile, true, 2, 2, 317);
     recorder = new EventRecorder(selector.configFile, selector.videoFile.getName(),selector.accelerometerFile);
-    
+    break;
+  case MAKER:
+    maker = new ConfigMaker(this);
     break;
   }
 }
@@ -47,6 +51,8 @@ void keyPressed() {
     break;
   case PLAY:
     recorder.keyEvent(key, player.getTime(), player.getDuration());
+    break;
+  case MAKER:
     break;
   }
 }
@@ -62,6 +68,8 @@ void draw() {
     player.render();
     recorder.updateLogEvents(player.getTime());
     recorder.render();
+    break;
+  case MAKER:
     break;
   }
 }
