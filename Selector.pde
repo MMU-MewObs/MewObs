@@ -56,7 +56,7 @@ public class Selector {
       .setColorBackground(0)
       .setSize(200, 50)
       .plugTo(this);
-    btnSettings.getCaptionLabel().toUpperCase(true).setFont(cf1);
+    btnConfigmaker.getCaptionLabel().toUpperCase(true).setFont(cf1);
 
     //NEXT BUTTON
     btnNextState = gui.addButton("toNextState")
@@ -145,6 +145,18 @@ public class Selector {
       btnAccelerometer.hide();
       refreshState(nextState);
     }
+  }
+  
+  
+  public void configCreator(){
+     // text("test",100,500);
+     btnConfigmaker.hide();
+      title.hide();
+      btnVideo.hide();
+      btnSettings.hide();
+      btnNextState.hide();
+      btnAccelerometer.hide();
+      refreshState(Mode.MAKER);
   }
 
   //File validation checking

@@ -38,6 +38,7 @@ void refreshState(Mode newMode) {
     recorder = new EventRecorder(selector.configFile, selector.videoFile.getName(),selector.accelerometerFile);
     break;
   case MAKER:
+    background(background1);
     maker = new ConfigMaker(this);
     break;
   }
