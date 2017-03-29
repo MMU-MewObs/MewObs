@@ -143,6 +143,7 @@ public class Selector {
       btnSettings.hide();
       btnNextState.hide();
       btnAccelerometer.hide();
+       btnConfigmaker.hide();
       refreshState(nextState);
     }
   }
