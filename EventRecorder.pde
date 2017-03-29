@@ -74,8 +74,9 @@ public class EventRecorder {
 
 for (Event e : events){
   
+ 
 if(Accelerometer==null)
-{
+{    //Loading up the keys used if no accelerometer.
       textSize(15);
       fill(0);
       text("Keys Used in this File:", 170, 360);
@@ -96,9 +97,8 @@ if(Accelerometer==null)
     
       textSize(15);
       fill(0);
-      text("Accelerometer File:", 170, 360);
-    
-    
+      text("Accelerometer File:", 170, 390);
+    //Loading the keys in different position  when accelerometer is available 
       textSize(15);
       fill(0);
       text("Keys Used in this File:", 700, 360);

@@ -44,7 +44,6 @@ public class Player {
   public void gui() {
     
     //PLAY BUTTON
-    
     playb=loadImage(dataPath("images/play.png"));
     play_click=loadImage(dataPath("images/play_click.png"));
     play_hover=loadImage(dataPath("images/play_hover.png"));
@@ -60,7 +59,7 @@ public class Player {
     pause_click.resize(25, 25);
     pause_hover.resize(25, 25);
 
-    //MUTE
+    //MUTE BUTTON
     muteb=loadImage(dataPath("images/mute.png"));
     mute_click=loadImage(dataPath("images/mute_click.png"));
     mute_hover=loadImage(dataPath("images/mute_hover.png"));
@@ -68,7 +67,7 @@ public class Player {
     mute_click.resize(25, 25);
     mute_hover.resize(25, 25);
 
-    //MEDIUM
+    //MEDIUM VOL BUTTON
     mediumb=loadImage(dataPath("images/medium.png"));
     medium_click=loadImage(dataPath("images/medium_click.png"));
     medium_hover=loadImage(dataPath("images/medium_hover.png"));
@@ -76,7 +75,7 @@ public class Player {
     medium_click.resize(25, 25);
     medium_hover.resize(25, 25);
 
-    //LOUD
+    //LOUD VOL BUTTON
     loudb=loadImage(dataPath("images/loud.png"));
     loud_click=loadImage(dataPath("images/loud_click.png"));
     loud_hover=loadImage(dataPath("images/loud_hover.png"));
@@ -84,7 +83,7 @@ public class Player {
     loud_click.resize(25, 25);
     loud_hover.resize(25, 25);
 
-    //BACK
+    //BACK BUTTON
     backb=loadImage(dataPath("images/back.png"));
     back_click=loadImage(dataPath("images/back_click.png"));
     back_hover=loadImage(dataPath("images/back_hover.png"));
@@ -92,7 +91,7 @@ public class Player {
     back_click.resize(25, 25);
     back_hover.resize(25, 25);
 
-    //FORWARD
+    //FORWARD BUTTON
     forwardb=loadImage(dataPath("images/forward.png"));
     forward_click=loadImage(dataPath("images/forward_click.png"));
     forward_hover=loadImage(dataPath("images/forward_hover.png"));
@@ -100,6 +99,7 @@ public class Player {
     forward_click.resize(25, 25);
     forward_hover.resize(25, 25);
 
+    //SCREENSHOT BUTTON
     screenb=loadImage(dataPath("images/screen.png"));
     screen_click=loadImage(dataPath("images/screen_click.png"));
     screen_hover=loadImage(dataPath("images/screen_hover.png"));
@@ -111,13 +111,16 @@ public class Player {
 
 
     //****BUTTONS****
+    
+    //Play button
     play =gui.addButton("btnPlay")
-      .setPosition(35, 320)
-      .setImages(playb, play_hover, play_click)
-      .setSize(25, 25)
-      .plugTo(this);
+      .setPosition(35, 320)//setting the position
+      .setImages(playb, play_hover, play_click)//setting all the images
+      .setSize(25, 25)//setting the size of the button
+      .plugTo(this);//enabling the button
     play.getCaptionLabel();
 
+    //Pause button
     Button pause =gui.addButton("pause")
       .setPosition(5, 320)
       .setImages(pauseb, pause_hover, pause_click)
@@ -125,9 +128,10 @@ public class Player {
       .plugTo(this);
     pause.getCaptionLabel();
 
+    //Video slider
     videoLength =gui.addSlider("slider")
       .setSize(170, 15)
-      .setLabelVisible(false)
+      .setLabelVisible(false)//hiding the label from slider
       .setColorBackground(0)
       .setPosition(70, 325)
       .setRange(0, mov.duration())
@@ -136,19 +140,22 @@ public class Player {
       videoLength.getValueLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
       videoLength.getCaptionLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
 
+    //Volumer Label
     Textlabel volume = gui.addLabel("Volume:")
       .setPosition(245, 325)
       .setColorValue(0)
       .setFont(createFont("Helvetica", 13))
       .plugTo(this);
-
+      
+    //Mute button
     Button Mute =gui.addButton("mute")
       .setImages(muteb, mute_hover, mute_click)
       .setSize(25, 25)
       .setPosition(300, 320)
       .plugTo(this);
     Mute.getCaptionLabel();
-
+    
+    //Medium vol button
     Button Medium =gui.addButton("Medium")
       .setImages(mediumb, medium_hover, medium_click)
       .setSize(25, 25)
@@ -156,6 +163,7 @@ public class Player {
       .plugTo(this);
     Medium.getCaptionLabel();
 
+    //High vol button
     Button High =gui.addButton("High")
       .setImages(loudb, loud_hover, loud_click)
       .setSize(25, 25)
@@ -163,25 +171,28 @@ public class Player {
       .plugTo(this);
     High.getCaptionLabel();
 
+    //Speed Control List
     ScrollableList Speed = gui.addScrollableList("SpeedControl")
       .setPosition(400, 325)
       .setSize(80, 100)
-      .setItemHeight(15)
-      .setBarHeight(15)
+      .setItemHeight(13)
+      .setBarHeight(13)
       .setOpen(false)
-      .addItem("Speed 0.5", 0.5)
+      .addItem("Speed 0.5", 0.5)//Adding all the values of the Speed Control list
       .addItem("Speed 1", 0.99)
       .addItem("Speed 1.5", 1.5) 
       .addItem("Speed 2", 1.99)
       .setColorBackground(0)
       .plugTo(this);
 
+    //Back button
     Button Back =gui.addButton("Back")
       .setImages(backb, back_hover, back_click)
       .setPosition(490, 320)
       .setSize(25, 25)
       .plugTo(this);
-
+      
+    //forward button
     Button forward=gui.addButton("forward")
       .setImages(forwardb, forward_hover, forward_click)
       .setPosition(525, 320)
@@ -189,7 +200,7 @@ public class Player {
       .plugTo(this);
       
       Boolean save;
-      
+     //Screenshot Button
      Button screenshot=gui.addButton("screenshot")
        .setImages(screenb,screen_hover,screen_click)
        .setPosition(945,545)
@@ -223,8 +234,8 @@ public class Player {
     
     Chart myChart;
     myChart = gui.addChart("acccelerometerChart")
-                 .setPosition(5, 365)
-                 .setSize(560, 220)
+                 .setPosition(5,395)
+                 .setSize(560, 200)
                  .setRange(-max, max)
                  .setCaptionLabel("")
                  .setView(Chart.LINE)
@@ -250,17 +261,16 @@ public class Player {
   
   public void screenshot()
   {
-    String desktopPath=System.getProperty("user.home")+"/Desktop";
-    saveFrame( System.getProperty("user.home") + "/Desktop/mewobs_####.png");
-    
-   
+    String desktopPath=System.getProperty("user.home")+"/Desktop";//seting the path of the screenshot
+    saveFrame( System.getProperty("user.home") + "/Desktop/MewObs_####.png");//seting the name of the screenshot
   }
   
-  public void SpeedCtrl(int n) {
-    mov.speed((float)gui.get(ScrollableList.class, "SpeedCtrl").getItem(n).get("value"));
+  //**VIDEO CONTROL**
+  
+  public void SpeedControl(int n) {
+    mov.speed((float)gui.get(ScrollableList.class, "SpeedControl").getItem(n).get("value"));
   }
   
-
   public void mute()
   {
     mov.volume(0);
