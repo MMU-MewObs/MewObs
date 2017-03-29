@@ -320,7 +320,7 @@ public class Player {
     if (mov.available() == true) {
       videoLength.setValue(mov.time());
       mov.read();
-        text(secondsToMMSS((int)mov.time()),249,337);//Elapsed video time
+      text(secondsToMMSS((int)mov.time()),249,337);//Elapsed video time
       ratio = (float) mov.width / mov.height;
     }
     image(mov, x, y, ratio * ySize, ySize);
