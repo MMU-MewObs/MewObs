@@ -251,6 +251,10 @@ public class Player {
     
     myChart.addDataSet("accelZ");
     myChart.setData("accelZ", accDataZ.array());
+    
+    myChart.setColors("accelZ", color(255, 0, 255),color(255,0,0));
+    myChart.setColors("accelY", color(255, 0, 0),color(255,0,0));
+    myChart.setColors("accelZ", color(0, 255, 255),color(255,0,0));
   }
   
 
