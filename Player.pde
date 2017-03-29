@@ -139,14 +139,7 @@ public class Player {
       
       videoLength.getValueLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
       videoLength.getCaptionLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
-
-    //Volumer Label
-    Textlabel volume = gui.addLabel("Volume:")
-      .setPosition(245, 325)
-      .setColorValue(0)
-      .setFont(createFont("Helvetica", 13))
-      .plugTo(this);
-      
+     
     //Mute button
     Button Mute =gui.addButton("mute")
       .setImages(muteb, mute_hover, mute_click)
@@ -178,10 +171,10 @@ public class Player {
       .setItemHeight(13)
       .setBarHeight(13)
       .setOpen(false)
-      .addItem("Speed 0.5", 0.5)//Adding all the values of the Speed Control list
-      .addItem("Speed 1", 0.99)
-      .addItem("Speed 1.5", 1.5) 
-      .addItem("Speed 2", 1.99)
+      .addItem("Speed x 0.5", 0.5)//Adding all the values of the Speed Control list
+      .addItem("Speed x 1", 0.99)
+      .addItem("Speed x 1.5", 1.5) 
+      .addItem("Speed x 2", 1.99)
       .setColorBackground(0)
       .plugTo(this);
 
@@ -327,6 +320,7 @@ public class Player {
     if (mov.available() == true) {
       videoLength.setValue(mov.time());
       mov.read();
+        text(secondsToMMSS((int)mov.time()),249,337);//Elapsed video time
       ratio = (float) mov.width / mov.height;
     }
     image(mov, x, y, ratio * ySize, ySize);

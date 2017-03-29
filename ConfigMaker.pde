@@ -81,6 +81,24 @@ public class ConfigMaker{
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
+      
+      
+             gui.addButton("Save")
+      .setPosition(880,550)
+      .setSize(100,40)
+      .setColorBackground(0)
+      .setFont(cf3)
+      .setLabel("Save")
+      .plugTo(this);
+      
+       gui.addButton("Back")
+      .setPosition(880,500)
+      .setSize(100,40)
+      .setColorBackground(0)
+      .setFont(cf3)
+      .setLabel("Back")
+      .plugTo(this);
+    
     
   }
   
@@ -130,15 +148,10 @@ public class ConfigMaker{
       .setPosition(x + 720, y)
       .setColorBackground(0)
       .setFont(cf1)
-      .setLabel("Remove");
+      .setLabel("Remove")
+      .plugTo(this);
       
-       gui.addButton(prefix + index +  "Save")
-      .setPosition(880,550)
-      .setSize(100,40)
-      .setColorBackground(0)
-      .setFont(cf3)
-      .setLabel("Save");
-    
+
     
     rows.add(index);
     index++;
@@ -160,6 +173,12 @@ public class ConfigMaker{
       addButton.setPosition(360, y);
     }
    
+  }
+  
+  public void Back(){
+    text("TEST",400,200);
+    //gui.hide();
+    refreshState(Mode.SELECTOR);
   }
   
   void hide(){
