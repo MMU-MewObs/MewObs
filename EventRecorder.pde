@@ -21,6 +21,7 @@ public class EventRecorder {
     this.Accelerometer = Accelerometer;
     Date d = new Date();
     new File(dataPath("")).mkdirs();
+    new File(dataPath("logs")).mkdirs();
     this.outputFile = new File(dataPath("logs/" + d.getTime() + ".csv"));
     if (!outputFile.exists()) {
       try {
