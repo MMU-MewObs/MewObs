@@ -8,37 +8,12 @@ public class ConfigMaker {
   ControlFont cf2 = new ControlFont(createFont("Helvetica", 54, true));
   ControlFont cf3 = new ControlFont(createFont("Arial", 22, true));
 
-<<<<<<< HEAD
-  ArrayList<Integer> rows;
-Textlabel title2;
-
-Textfield txtgroup;
-Textfield txtid;
-Textfield txtrun;
-Textfield txteditme1;
-Textfield txteditme2;
-Textfield txteditme3;
-
-Textfield txtkey;
-Textfield txtlabel;
-Textfield txtmeg;
-
-RadioButton rdbtnSteve;
-
-Button btnsave;
-Button btnback;
-Button btnremove;
-Button addButton = null;
-
-
-
-=======
   ArrayList<ConfigRow> rows;
 
   Textlabel title;
   Textfield txtGroup, txtId, txtRun, txtEditMe1, txtEditMe2, txtEditMe3;
   Button btnSave, btnBack;
->>>>>>> origin/master
+
 
   ConfigMaker(PApplet app) {
     papp = app;
@@ -47,15 +22,10 @@ Button addButton = null;
 
     drawLabels();
     drawNewRow();
-<<<<<<< HEAD
-    
-    txtgroup= gui.addTextfield("group")
-      .setPosition(10,80)
-=======
+
 
     title = gui.addLabel("Config Maker Section")
       .setPosition(200, 0)
->>>>>>> origin/master
       .setColorBackground(0)
       .setColor(0)
       .setFont(cf2)
@@ -69,108 +39,66 @@ Button addButton = null;
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-    
-    txtid= gui.addTextfield("id")
-      .setPosition(120,80)
-=======
+
 
     txtId = gui.addTextfield("id")
       .setPosition(120, 80)
->>>>>>> origin/master
       .setColorBackground(0)
       .setSize(100, 20)
       .setFocus(true)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-      
-    txtrun= gui.addTextfield("run")
-      .setPosition(230,80)
-=======
 
     txtRun = gui.addTextfield("run")
       .setPosition(230, 80)
->>>>>>> origin/master
       .setColorBackground(0)
       .setSize(100, 20)
       .setFocus(true)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-      
-    txteditme1= gui.addTextfield("editme1")
-      .setPosition(340,80)
-=======
 
     txtEditMe1 = gui.addTextfield("editme1")
       .setPosition(340, 80)
->>>>>>> origin/master
       .setColorBackground(0)
       .setSize(100, 20)
       .setFocus(true)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-    
-   txteditme2=gui.addTextfield("editme2")
-      .setPosition(450,80)
-=======
-
+      
     txtEditMe2 = gui.addTextfield("editme2")
       .setPosition(450, 80)
->>>>>>> origin/master
       .setColorBackground(0)
       .setSize(100, 20)
       .setFocus(true)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-      
-    txteditme3=gui.addTextfield("editme3")
-      .setPosition(560,80)
-=======
+
 
     txtEditMe3 = gui.addTextfield("editme3")
       .setPosition(560, 80)
->>>>>>> origin/master
       .setColorBackground(0)
       .setSize(100, 20)
       .setFocus(true)
       .setFont(cf1)
       .setCaptionLabel("") 
       .plugTo(this);
-<<<<<<< HEAD
-      
-      
-    btnsave =gui.addButton("Save")
-      .setPosition(880,550)
-      .setSize(100,40)
-=======
+
 
     btnSave = gui.addButton("Save")
       .setPosition(880, 550)
       .setSize(100, 40)
->>>>>>> origin/master
       .setColorBackground(0)
       .setFont(cf3)
       .setLabel("Save")
       .plugTo(this);
-<<<<<<< HEAD
-      
-    btnback=gui.addButton("Back")
-      .setPosition(880,500)
-      .setSize(100,40)
-=======
 
     btnBack = gui.addButton("Back")
       .setPosition(880, 500)
       .setSize(100, 40)
->>>>>>> origin/master
       .setColorBackground(0)
       .setFont(cf3)
       .setLabel("Back")
@@ -178,22 +106,9 @@ Button addButton = null;
   }
 
 
-<<<<<<< HEAD
 
-  public void drawNewRow(){
-    
-  title2=  gui.addLabel("Config Maker Section")
-      .setPosition(200,0)
-      .setColorBackground(0)
-      .setColor(0)
-      .setFont(cf2)
-      .plugTo(this);
-    
-   txtkey= gui.addTextfield(prefix + index +  "_key")
-=======
   public void drawNewRow() {
     Textfield keyField = gui.addTextfield(prefix + index +  "_key")
->>>>>>> origin/master
       .setPosition(x, y)
       .setColorBackground(0)
       .setSize(50, 20)
@@ -202,11 +117,8 @@ Button addButton = null;
       .setCaptionLabel("") 
       .plugTo(this);
 
-<<<<<<< HEAD
-   txtlabel= gui.addTextfield(prefix + index +  "_label")
-=======
+
     Textfield labelField = gui.addTextfield(prefix + index +  "_label")
->>>>>>> origin/master
       .setPosition(x + 70, y)
       .setColorBackground(0)
       .setSize(200, 20)
@@ -214,11 +126,7 @@ Button addButton = null;
       .setCaptionLabel("") 
       .plugTo(this);
 
-<<<<<<< HEAD
-   rdbtnSteve= gui.addRadioButton(prefix + index +  "_steve")
-=======
     RadioButton r = gui.addRadioButton(prefix + index +  "_steve")
->>>>>>> origin/master
       .setPosition(x+300, y)
       .setSize(40, 20)
       .setItemsPerRow(2)
@@ -230,9 +138,6 @@ Button addButton = null;
       .setValue(1)
       .plugTo(this);
 
-<<<<<<< HEAD
-   txtmeg= gui.addTextfield(prefix + index +  "_meg")
-=======
     Textlabel state = gui.addLabel(prefix + index +  "_state")
       .setPosition(x+340, y)
       .setText("State")
@@ -248,7 +153,6 @@ Button addButton = null;
     r.activate(0);
 
     Textfield megField = gui.addTextfield(prefix + index +  "_meg")
->>>>>>> origin/master
       .setPosition(x + 510, y)
       .setColorBackground(0)
       .setSize(200, 20)
@@ -256,18 +160,7 @@ Button addButton = null;
       .setCaptionLabel("") 
       .plugTo(this);
 
-<<<<<<< HEAD
-    btnremove= gui.addButton(prefix + index +  "_remove")
-      .setPosition(x + 720, y)
-      .setColorBackground(0)
-      .setFont(cf1)
-      .setLabel("Remove")
-      .plugTo(this);
-
-    rows.add(index);
-=======
     rows.add(new ConfigRow(keyField, labelField, r, state, event, megField));
->>>>>>> origin/master
     index++;
     y+= 30;
     if (index < 15) {
@@ -277,9 +170,6 @@ Button addButton = null;
     }
   }
 
-<<<<<<< HEAD
-  
-=======
   Button addButton = null;
   public void drawAddButton(boolean hideButton) {
     if (addButton == null) {
@@ -312,7 +202,6 @@ Button addButton = null;
     text("EditMe2", 450, 75);
     text("EditMe3", 560, 75);
   }
->>>>>>> origin/master
 
   public void Back() {
     for (ConfigRow r : rows) {
@@ -386,26 +275,6 @@ public class ConfigRow {
     this.meg = meg;
   }
 
-<<<<<<< HEAD
-  public void Back(){
-    txtgroup.hide();
-    txtid.hide();
-    txtrun.hide();
-    txteditme1.hide();
-    txteditme2.hide();
-    txteditme3.hide();
-    title2.hide();
-    txtkey.hide();
-    txtlabel.hide();
-    rdbtnSteve.hide();
-    txtmeg.hide();
-    btnremove.hide();
-    addButton.hide();
-    btnback.hide();
-    
-
-    refreshState(Mode.SELECTOR);
-=======
   public String getRowAsCSVString() {
     String str = "1, ";
     str += key.getText() + ",";
@@ -417,7 +286,6 @@ public class ConfigRow {
     }
     str += meg.getText() + "\n";
     return str;
->>>>>>> origin/master
   }
 
   public void hide() {
