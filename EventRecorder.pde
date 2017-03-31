@@ -1,4 +1,4 @@
-import java.io.*; //<>//
+import java.io.*; //<>// //<>//
 import java.lang.*;
 
 final int STEVE = 1;
@@ -16,7 +16,7 @@ public class EventRecorder {
   File Accelerometer;
   Logger logger;
   EventRecorder(File configFile, String videoFileName, File Accelerometer) {
-    logger = new Logger(600, 40); //<>// //<>//
+    logger = new Logger(600, 40); //<>//
     this.configFile = configFile;
     this.Accelerometer = Accelerometer;
     Date d = new Date();
@@ -41,15 +41,15 @@ public class EventRecorder {
       switch(Integer.valueOf((row[0]))) {
       case STEVE:
         println(row[3]);
-        if(!row[2].trim().equalsIgnoreCase("na")){
-           events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
+        if (!row[2].trim().equalsIgnoreCase("na")) {
+          events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
         }
         break;
       case GROUP:
-        if(!row[2].trim().equalsIgnoreCase("na")){
+        if (!row[2].trim().equalsIgnoreCase("na")) {
           userVars = String.join(",", new String[]{row[1], row[2], row[3], row[4]});
         }
-        
+
         break;
       case LOG:
         events.add(new Event(row[1].charAt(0), row[2], row[3], row[4]));
@@ -73,49 +73,45 @@ public class EventRecorder {
     text(userVars, 620, 20);
     logger.render();
 
-for (Event e : events){
-  
- 
-if(Accelerometer==null)
-{    //Loading up the keys used if no accelerometer.
-      textSize(15);
-      fill(0);
-      text("Keys Used in this File:", 170, 360);
-      textSize(12);
-      fill(0);
-      text(e.keyStroke+")"+" "+e.label, x, y);
-      y+=15;
-      rows++;
+    for (Event e : events) {
+      if (Accelerometer==null)
+      {    //Loading up the keys used if no accelerometer.
+        textSize(15);
+        fill(0);
+        text("Keys Used in this File:", 170, 360);
+        textSize(12);
+        fill(0);
+        text(e.keyStroke+")"+" "+e.label, x, y);
+        y+=15;
+        rows++;
 
-      if (rows==14) {
-        rows=0;
-        x=x+155;
-        y=380;
-      }
-  }
-  else
-  {
-    
-      textSize(15);
-      fill(0);
-      text("Accelerometer File:", 170, 390);
-    //Loading the keys in different position  when accelerometer is available 
-      textSize(15);
-      fill(0);
-      text("Keys Used in this File:", 700, 360);
-      textSize(12);
-      fill(0);
-      text(e.keyStroke+")"+" "+e.label, x+600, y);
-      y+=15;
-      rows++;
+        if (rows==14) {
+          rows=0;
+          x=x+155;
+          y=380;
+        }
+      } else {
 
-      if (rows==14) {
-        rows=0;
-        x=x+155;
-        y=380;
+        textSize(15);
+        fill(0);
+        text("Accelerometer File:", 170, 390);
+        //Loading the keys in different position  when accelerometer is available 
+        textSize(15);
+        fill(0);
+        text("Keys Used in this File:", 700, 360);
+        textSize(12);
+        fill(0);
+        text(e.keyStroke+")"+" "+e.label, x+600, y);
+        y+=15;
+        rows++;
+
+        if (rows==14) {
+          rows=0;
+          x=x+155;
+          y=380;
+        }
       }
     }
-  }
   }
 
   public void updateLogEvents(float vidTime) {
@@ -151,7 +147,6 @@ if(Accelerometer==null)
       String outputFileName = JOptionPane.showInputDialog(null, "Choose output file name", videoFileName.replaceFirst("[.][^.]+$", "") + "_" + configFile.getName().replaceFirst("[.][^.]+$", ""));
       File renamedOutput = new File(selection.getAbsolutePath()+ "/" + outputFileName + ".csv");
       if (outputFileName != null) {
-        println(renamedOutput.getAbsolutePath());
         if (renamedOutput.exists() == true && JOptionPane.showConfirmDialog(null, "File already exists, do you want to overwrite it?", "Override File", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
           JOptionPane.showMessageDialog(null, "Cancelled saving file", "Cancelled saving file", javax.swing.JOptionPane.INFORMATION_MESSAGE);
           return;
@@ -162,8 +157,8 @@ if(Accelerometer==null)
           outputFile.renameTo(renamedOutput);
         } 
         catch (IOException err) {
-          println("Error occoured trying to write to file");
-          err.printStackTrace();
+ 
+          println("Error occoured trying to write to file");         err.printStackTrace();
         }
       } else {
         JOptionPane.showMessageDialog(null, "Input failed", "File name cannot be empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
