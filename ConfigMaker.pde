@@ -109,7 +109,7 @@ public class ConfigMaker {
 
   public void drawNewRow() {
     Textfield keyField = gui.addTextfield(prefix + index +  "_key")
-      .setPosition(x, y)
+      .setPosition(x, y+20)
       .setColorBackground(0)
       .setSize(50, 20)
       .setFocus(true)
@@ -119,7 +119,7 @@ public class ConfigMaker {
 
 
     Textfield labelField = gui.addTextfield(prefix + index +  "_label")
-      .setPosition(x + 70, y)
+      .setPosition(x + 70, y+20)
       .setColorBackground(0)
       .setSize(200, 20)
       .setFont(cf1)
@@ -127,7 +127,7 @@ public class ConfigMaker {
       .plugTo(this);
 
     RadioButton r = gui.addRadioButton(prefix + index +  "_steve")
-      .setPosition(x+300, y)
+      .setPosition(x+300, y+20)
       .setSize(40, 20)
       .setItemsPerRow(2)
       .setColorBackground(0)
@@ -139,13 +139,13 @@ public class ConfigMaker {
       .plugTo(this);
 
     Textlabel state = gui.addLabel(prefix + index +  "_state")
-      .setPosition(x+340, y)
+      .setPosition(x+340, y+20)
       .setText("State")
       .setFont(createFont("Arial", 15))
       .plugTo(this);
 
     Textlabel event = gui.addLabel(prefix + index +  "_event")
-      .setPosition(x+430, y)
+      .setPosition(x+430, y+20)
       .setText("Event")
       .setFont(createFont("Arial", 15))
       .plugTo(this);
@@ -153,7 +153,7 @@ public class ConfigMaker {
     r.activate(0);
 
     Textfield megField = gui.addTextfield(prefix + index +  "_meg")
-      .setPosition(x + 510, y)
+      .setPosition(x + 510, y+20)
       .setColorBackground(0)
       .setSize(200, 20)
       .setFont(cf1)
@@ -174,7 +174,7 @@ public class ConfigMaker {
   public void drawAddButton(boolean hideButton) {
     if (addButton == null) {
       addButton = gui.addButton("drawNewRow")
-        .setPosition(360, y)
+        .setPosition(360, y+20)
         .setFont(cf1)
         .setLabel("Add")
         .plugTo(this);
@@ -184,17 +184,17 @@ public class ConfigMaker {
       if (hideButton) {
         addButton.hide();
       } else {
-        addButton.setPosition(360, y);
+        addButton.setPosition(360, y+20);
       }
     }
   }
 
   public void drawLabels() {
     textSize(15);
-    text("Key", x, 135);
-    text("Label", x + 70, 135);
-    text("StEve", x + 345, 135);
-    text("MEG", x + 510, 135);
+    text("Key", x, 155);
+    text("Label", x + 70, 155);
+    text("StEve", x + 345, 155);
+    text("MEG", x + 510, 155);
     text("EditMe1", 10, 75);
     text("EditMe2", 120, 75);
     text("EditMe3", 230, 75);
