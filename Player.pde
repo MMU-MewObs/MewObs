@@ -328,5 +328,16 @@ public class Player {
       ratio = (float) mov.width / mov.height;
     }
     image(mov, x, y, ratio * ySize, ySize);
+    
+          float md = mov.duration();
+      float mt = mov.time();
+      float m = map(mt, 0,md,0,565);
+            line(m, 0,m ,565);
+
+      strokeWeight(1);
+      textSize(24);
+      text(mt,25,25);
+      stroke(255);
+    
   }
 }
