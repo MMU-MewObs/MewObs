@@ -57,7 +57,7 @@ public class EventRecorder {
     }
     try {
       output = new FileWriter(outputFile.getAbsolutePath(), true);
-      output.write("label, steve, meg, time, duration," + userVars +  "\n" );
+      output.write("label, steve, meg1, meg2, meg3, time, duration," + userVars +  "\n" );
       output.flush();
     } 
     catch(IOException err) {
@@ -81,7 +81,7 @@ public class EventRecorder {
         text("Keys Used in this File:", 170, 360);
         textSize(12);
         fill(0);
-        text(e.keyStroke+")"+" "+e.label, x, y);
+        text(e.keyStroke+""+" "+e.label, x, y);
         y+=15;
         rows++;
 
@@ -101,7 +101,7 @@ public class EventRecorder {
         text("Keys Used in this File:", 700, 360);
         textSize(12);
         fill(0);
-        text(e.keyStroke+")"+" "+e.label, x+600, y);
+        text(e.keyStroke+""+" "+e.label, x+600, y);
         y+=15;
         rows++;
 
@@ -171,12 +171,15 @@ public class EventRecorder {
 
 public class Event {
   char keyStroke;
-  String label, steve, meg;
-  Event(char keyStroke, String label, String steve, String meg) {
+  String label, steve, meg1, meg2, meg3;
+  Event(char keyStroke, String label, String steve, String meg1, String meg2,String meg3) {
     this.keyStroke = keyStroke;
     this.label = label;
     this.steve = steve;
-    this.meg = meg;
+    this.meg1 = meg1;
+        this.meg2 = meg2;
+    this.meg3 = meg3;
+
   }
 
   String getOutputString(String seperator) {
