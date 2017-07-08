@@ -177,16 +177,20 @@ public class Event {
     this.label = label;
     this.steve = steve;
     this.meg1 = meg1;
-        this.meg2 = meg2;
+    this.meg2 = meg2;
     this.meg3 = meg3;
 
   }
 
   String getOutputString(String seperator) {
-    String[] toWrite = new String[3];
+    String[] toWrite = new String[5];
     toWrite[0] = label;
     toWrite[1] = steve;
-    toWrite[2] = meg;
+    toWrite[2] = meg1;
+    toWrite[3] = meg2;
+    toWrite[4] = meg3;
+
+    
     return join(toWrite, seperator);
   }
 
