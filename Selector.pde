@@ -89,7 +89,7 @@ public class Selector {
   //Video file Selection
   void videoFileSelected(File selection) {
     if (selection != null) {
-      JOptionPane.showMessageDialog(null, "File Chosen Succesfully,If needed to change click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(null, "File chosen succesfully. To change file click again", "File Confirmation", javax.swing.JOptionPane.INFORMATION_MESSAGE);
       if (isValidFileType(selection, new String[]{"mp4", "mov"}) == true)//**Supported Video Files {
         videoFile = selection;
       } else {//Error message
@@ -134,7 +134,7 @@ public class Selector {
   void toNextState() {
     if (configFile ==null || videoFile==null)//checking if all the files are included
     { 
-      JOptionPane.showMessageDialog(null, "Please Provide the fields", "1 or more Fields Empty", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(null, "Please choose the files", "1 or more files not chosen", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     } else {
       surface.setTitle("MewObs - " + configFile.getName().replaceFirst("[.][^.]+$", ""));
       //Hiding the Selector Gui

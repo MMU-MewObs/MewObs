@@ -174,7 +174,7 @@ public class ConfigMaker {
       .setCaptionLabel("") 
       .plugTo(this);
     //rows.add(new ConfigRow(keyField, labelField, r, state, event, meg1Field, meg2Field, meg3Field));
-    rows.add(new ConfigRow(keyField, labelField, r, state, event, meg1Field,meg2Field, meg3Field));
+    rows.add(new ConfigRow(keyField, labelField, r, state, event, meg1Field, meg2Field, meg3Field));
 
     index++;
     y+= 30;
@@ -288,7 +288,7 @@ public class ConfigRow {
   Textfield meg2;
   Textfield meg3;
 
-  ConfigRow(Textfield key, Textfield label, RadioButton steve, Textlabel state, Textlabel event, Textfield meg) {
+  ConfigRow(Textfield key, Textfield label, RadioButton steve, Textlabel state, Textlabel event, Textfield meg1, Textfield meg2, Textfield meg3) {
     this.key = key;
     this.label = label;
     this.steve = steve;
